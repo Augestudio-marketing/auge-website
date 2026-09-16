@@ -52,7 +52,7 @@ export default function Servicios() {
         <p className="text-xs uppercase tracking-widest2 text-burgundy">
           Servicios
         </p>
-        <h2 className="mt-4 max-w-xl font-serif text-4xl leading-tight text-stone sm:text-5xl">
+        <h2 className="mt-4 max-w-xl font-serif text-4xl font-semibold leading-tight tracking-tight text-stone sm:text-5xl">
           Tres formas de empezar.
         </h2>
 

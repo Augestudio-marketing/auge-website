@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-stone/10 bg-cream/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
-        <a href="#inicio" className="font-serif text-2xl tracking-tight text-stone">
+        <a href="#inicio" className="font-serif text-2xl font-black tracking-tight text-stone">
           AUGE.
         </a>
 

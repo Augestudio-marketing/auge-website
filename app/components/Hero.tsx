@@ -12,7 +12,7 @@ export default function Hero() {
         Aesthetic Marketing Studio
       </p>
 
-      <h1 className="font-serif text-7xl leading-none text-stone sm:text-8xl md:text-9xl">
+      <h1 className="font-serif text-7xl font-black leading-none tracking-tight text-stone sm:text-8xl md:text-9xl">
         AUGE.
       </h1>
 

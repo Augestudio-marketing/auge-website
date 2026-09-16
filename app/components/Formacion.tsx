@@ -8,7 +8,7 @@ export default function Formacion() {
         <p className="text-xs uppercase tracking-widest2 text-burgundy">
           Complemento
         </p>
-        <h2 className="mt-4 font-serif text-4xl leading-tight text-stone sm:text-5xl">
+        <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight tracking-tight text-stone sm:text-5xl">
           Auge Formación
         </h2>
         <p className="mx-auto mt-8 max-w-2xl leading-relaxed text-stone/70">

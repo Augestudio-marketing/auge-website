@@ -23,7 +23,7 @@ export default function Problema() {
   return (
     <section className="border-t border-stone/10 px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-6xl">
-        <h2 className="max-w-xl font-serif text-4xl leading-tight text-stone sm:text-5xl">
+        <h2 className="max-w-xl font-serif text-4xl font-semibold leading-tight tracking-tight text-stone sm:text-5xl">
           Lo que resolvemos, para que tú vuelvas a centrarte en tu oficio.
         </h2>
 

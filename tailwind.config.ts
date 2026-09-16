@@ -10,7 +10,7 @@ const config: Config = {
         stone: "#2B2622",
       },
       fontFamily: {
-        serif: ["var(--font-fraunces)"],
+        serif: ["var(--font-serif)"],
         sans: ["var(--font-inter)"],
       },
       letterSpacing: {
