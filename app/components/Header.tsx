@@ -1,19 +1,15 @@
 import Image from "next/image";
 
-const WHATSAPP_URL =
-  "https://wa.me/34613803022?text=" +
-  encodeURIComponent("Hola, quiero saber más sobre AUGE.");
-
 const NAV_LINKS = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#formacion", label: "Formación" },
-  { href: "#sobre", label: "Nosotras" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "#sistema", label: "El sistema" },
+  { href: "#metodo", label: "Método" },
+  { href: "#momento", label: "Para quién" },
+  { href: "#precios", label: "Precios" },
 ];
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md">
+    <header className="bg-cream/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
         <a href="#inicio">
           <Image
@@ -26,7 +22,7 @@ export default function Header() {
           />
         </a>
 
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -39,12 +35,10 @@ export default function Header() {
         </nav>
 
         <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full border border-burgundy px-5 py-2 text-sm uppercase tracking-widest text-burgundy transition-colors hover:bg-burgundy hover:text-cream"
+          href="#diagnostico"
+          className="rounded-full bg-burgundy px-5 py-2 text-sm uppercase tracking-widest text-cream transition-opacity hover:opacity-90"
         >
-          WhatsApp
+          Diagnóstico gratuito
         </a>
       </div>
     </header>

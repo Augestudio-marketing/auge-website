@@ -6,6 +6,8 @@ const config: Config = {
     extend: {
       colors: {
         cream: "#F5F0E8",
+        marfil: "#F0EAE0",
+        hueso: "#EBE2D0",
         burgundy: "#5C1A1B",
         stone: "#2B2622",
       },
