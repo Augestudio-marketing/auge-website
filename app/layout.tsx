@@ -18,9 +18,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AUGE. — Aesthetic Marketing Studio",
+  metadataBase: new URL("https://augestudio.es"),
+  title: "AUGE. — Sistema Auge para peluquerías y salones de belleza",
   description:
-    "Growth marketing para peluquerías, salones de belleza y centros de uñas. Agenda automatizada, WhatsApp con IA y redes que traen clientas.",
+    "Web a medida, reservas online, WhatsApp que responde solo, reseñas y clientas que vuelven. El sistema que gestiona tu marketing para que tú solo atiendas a tus clientas.",
+  openGraph: {
+    title: "AUGE. — Sistema Auge para peluquerías y salones de belleza",
+    description:
+      "Web a medida, reservas online, WhatsApp que responde solo, reseñas y clientas que vuelven.",
+    url: "https://augestudio.es",
+    siteName: "AUGE. Aesthetic Marketing Studio",
+    locale: "es_ES",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
