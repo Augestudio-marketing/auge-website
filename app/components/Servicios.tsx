@@ -44,10 +44,7 @@ const PLANES = [
 
 export default function Servicios() {
   return (
-    <section
-      id="servicios"
-      className="border-t border-stone/10 bg-stone/[0.03] px-6 py-28 md:px-10 md:py-36"
-    >
+    <section id="servicios" className="bg-cream px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-6xl">
         <p className="text-xs uppercase tracking-widest2 text-burgundy">
           Servicios
@@ -60,53 +57,77 @@ export default function Servicios() {
           {PLANES.map((plan) => (
             <div
               key={plan.nombre}
-              className={`flex flex-col border px-8 py-10 ${
+              className={`flex flex-col overflow-hidden rounded-3xl ${
                 plan.destacado
-                  ? "border-burgundy bg-cream"
-                  : "border-stone/15 bg-cream"
+                  ? "bg-burgundy text-cream md:-my-6 md:shadow-2xl md:shadow-burgundy/30"
+                  : "bg-white/60 text-stone ring-1 ring-stone/10"
               }`}
             >
-              {plan.destacado && (
-                <span className="mb-6 w-fit text-xs uppercase tracking-widest text-burgundy">
-                  Más popular
-                </span>
-              )}
-
-              <h3 className="font-serif text-3xl text-stone">{plan.nombre}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-stone/60">
-                {plan.descripcion}
-              </p>
-
-              <div className="mt-8">
-                <p className="font-serif text-4xl text-stone">
-                  {plan.arranque}
-                </p>
-                <p className="mt-1 text-xs uppercase tracking-widest text-stone/50">
-                  Arranque · luego {plan.mensual}
-                </p>
-              </div>
-
-              <ul className="mt-10 flex-1 space-y-4 border-t border-stone/10 pt-8">
-                {plan.incluye.map((item) => (
-                  <li
-                    key={item}
-                    className="text-sm leading-relaxed text-stone/75"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="#contacto"
-                className={`mt-10 block w-full py-3 text-center text-sm uppercase tracking-widest transition-colors ${
+              <div
+                className={`px-8 pb-8 pt-10 ${
                   plan.destacado
-                    ? "bg-burgundy text-cream hover:opacity-90"
-                    : "border border-stone/20 text-stone hover:border-burgundy hover:text-burgundy"
+                    ? "bg-gradient-to-br from-burgundy via-burgundy to-[#3a1012]"
+                    : ""
                 }`}
               >
-                Elegir {plan.nombre}
-              </a>
+                {plan.destacado ? (
+                  <span className="mb-6 inline-block w-fit rounded-full bg-cream/15 px-4 py-1 text-xs uppercase tracking-widest text-cream">
+                    Más popular
+                  </span>
+                ) : (
+                  <span className="mb-6 block h-[26px]" />
+                )}
+
+                <h3 className="font-serif text-3xl">{plan.nombre}</h3>
+                <p
+                  className={`mt-3 text-sm leading-relaxed ${
+                    plan.destacado ? "text-cream/75" : "text-stone/60"
+                  }`}
+                >
+                  {plan.descripcion}
+                </p>
+
+                <div className="mt-8">
+                  <p className="font-serif text-4xl">{plan.arranque}</p>
+                  <p
+                    className={`mt-1 text-xs uppercase tracking-widest ${
+                      plan.destacado ? "text-cream/60" : "text-stone/50"
+                    }`}
+                  >
+                    Arranque · luego {plan.mensual}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-1 flex-col px-8 pb-10">
+                <ul
+                  className={`flex-1 space-y-4 border-t pt-8 ${
+                    plan.destacado ? "border-cream/15" : "border-stone/10"
+                  }`}
+                >
+                  {plan.incluye.map((item) => (
+                    <li
+                      key={item}
+                      className={`text-sm leading-relaxed ${
+                        plan.destacado ? "text-cream/85" : "text-stone/75"
+                      }`}
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="#contacto"
+                  className={`mt-10 block w-full rounded-full py-3 text-center text-sm uppercase tracking-widest transition-opacity hover:opacity-80 ${
+                    plan.destacado
+                      ? "bg-cream text-stone"
+                      : "bg-stone text-cream"
+                  }`}
+                >
+                  Elegir {plan.nombre}
+                </a>
+              </div>
             </div>
           ))}
         </div>

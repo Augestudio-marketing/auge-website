@@ -20,16 +20,20 @@ export default function Contacto() {
   return (
     <section
       id="contacto"
-      className="border-t border-stone/10 px-6 py-28 md:px-10 md:py-36"
+      className="relative overflow-hidden px-6 py-28 md:px-10 md:py-36"
+      style={{
+        background:
+          "radial-gradient(circle at 15% 20%, #7a2426 0%, transparent 45%), radial-gradient(circle at 85% 85%, #7a2426 0%, transparent 50%), #2B0F10",
+      }}
     >
       <div className="mx-auto max-w-4xl text-center">
-        <p className="text-xs uppercase tracking-widest2 text-burgundy">
+        <p className="text-xs uppercase tracking-widest2 text-cream/60">
           Contacto
         </p>
-        <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight tracking-tight text-stone sm:text-5xl">
+        <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight tracking-tight text-cream sm:text-5xl">
           Empecemos por una conversación.
         </h2>
-        <p className="mx-auto mt-6 max-w-xl leading-relaxed text-stone/70">
+        <p className="mx-auto mt-6 max-w-xl leading-relaxed text-cream/70">
           Cuéntanos sobre tu salón y te respondemos con una propuesta a
           medida. Sin compromiso.
         </p>
@@ -38,12 +42,12 @@ export default function Contacto() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-10 inline-block bg-burgundy px-10 py-4 text-sm uppercase tracking-widest text-cream transition-opacity hover:opacity-90"
+          className="mt-10 inline-block rounded-full bg-cream px-10 py-4 text-sm uppercase tracking-widest text-stone transition-opacity hover:opacity-90"
         >
           Escríbenos por WhatsApp
         </a>
 
-        <div className="mx-auto mt-20 max-w-md text-left">
+        <div className="grain mx-auto mt-20 max-w-md rounded-3xl bg-cream px-8 py-10 text-left md:px-10">
           <p className="mb-8 text-center text-xs uppercase tracking-widest text-stone/50">
             O déjanos tus datos
           </p>
@@ -107,7 +111,7 @@ export default function Contacto() {
 
               <button
                 type="submit"
-                className="mt-4 w-full border border-stone/20 py-3 text-sm uppercase tracking-widest text-stone transition-colors hover:border-burgundy hover:text-burgundy"
+                className="mt-4 w-full rounded-full bg-stone py-3 text-sm uppercase tracking-widest text-cream transition-opacity hover:opacity-85"
               >
                 Enviar
               </button>
