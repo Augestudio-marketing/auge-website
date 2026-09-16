@@ -20,11 +20,7 @@ export default function Contacto() {
   return (
     <section
       id="contacto"
-      className="relative overflow-hidden px-6 py-28 md:px-10 md:py-36"
-      style={{
-        background:
-          "radial-gradient(circle at 15% 20%, #7a2426 0%, transparent 45%), radial-gradient(circle at 85% 85%, #7a2426 0%, transparent 50%), #2B0F10",
-      }}
+      className="bg-burgundy-glow relative overflow-hidden px-6 py-28 md:px-10 md:py-36"
     >
       <div className="mx-auto max-w-4xl text-center">
         <p className="text-xs uppercase tracking-widest2 text-cream/60">

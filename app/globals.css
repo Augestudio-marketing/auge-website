@@ -16,6 +16,13 @@ body {
   color: #F5F0E8;
 }
 
+.bg-burgundy-glow {
+  background:
+    radial-gradient(circle at 15% 20%, #7a2426 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, #7a2426 0%, transparent 50%),
+    #2b0f10;
+}
+
 .grain {
   position: relative;
   isolation: isolate;

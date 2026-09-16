@@ -8,19 +8,8 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-24 text-center md:px-10"
+      className="bg-burgundy-glow relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-24 text-center md:px-10"
     >
-      <Image
-        src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=2000&q=80&fm=jpg&fit=crop&auto=format"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-stone via-stone/70 to-burgundy/40" />
-      <div className="absolute inset-0 bg-burgundy/30 mix-blend-multiply" />
-
       <div className="relative z-10 flex flex-col items-center">
         <Image
           src="/logo-crema-full.png"
