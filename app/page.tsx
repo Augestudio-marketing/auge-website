@@ -19,12 +19,16 @@ import Footer from "./components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen bg-cream text-stone">
+      <div aria-hidden className="invisible">
+        <AnnouncementBar />
+        <Header />
+      </div>
       <div className="fixed inset-x-0 top-0 z-50">
         <AnnouncementBar />
         <Header />
       </div>
 
-      <div className="pt-[104px] md:pt-[112px]">
+      <div>
         <Hero />
         <Perdidas />
         <Selector />
