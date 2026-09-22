@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-stone px-6 pt-20 text-center md:px-10"
+      className="relative flex min-h-[85vh] flex-col items-center overflow-hidden bg-stone px-6 pb-20 pt-24 text-center md:min-h-screen md:justify-center md:px-10 md:pb-0 md:pt-20"
     >
       <div
         className="animate-float-a absolute -left-32 -top-32 h-[32rem] w-[32rem] rounded-full bg-burgundy/70 blur-[110px]"
