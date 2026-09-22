@@ -6,7 +6,6 @@ import SietePiezas from "./components/SietePiezas";
 import Cifras from "./components/Cifras";
 import PruebaloTu from "./components/PruebaloTu";
 import Metodo from "./components/Metodo";
-import QuienSomos from "./components/QuienSomos";
 import QuizCTA from "./components/QuizCTA";
 import ConQuien from "./components/ConQuien";
 import Garantia from "./components/Garantia";
@@ -32,7 +31,6 @@ export default function Home() {
         <Cifras />
         <PruebaloTu />
         <Metodo />
-        <QuienSomos />
         <QuizCTA />
         <ConQuien />
         <Garantia />

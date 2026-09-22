@@ -25,7 +25,7 @@ const PIEZAS = [
   },
   {
     titulo: "Publicidad.",
-    texto: "Campañas en Google y Meta medidas en lo que importa: coste por reserva.",
+    texto: "Campañas en Google y Meta medidas por lo que importa de verdad, el coste por reserva.",
   },
 ];
 
@@ -33,8 +33,8 @@ export default function SietePiezas() {
   return (
     <section className="bg-cream px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-5xl">
-        <h2 className="max-w-2xl font-display text-3xl font-black lowercase tracking-tight text-stone sm:text-4xl">
-          todo lo que tu negocio necesita para crecer. instalado dentro.
+        <h2 className="max-w-2xl font-display text-3xl font-black tracking-tight text-stone sm:text-4xl">
+          Todo lo que tu negocio necesita para crecer. Instalado dentro.
         </h2>
 
         <div className="mt-16 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">

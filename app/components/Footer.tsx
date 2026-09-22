@@ -1,18 +1,10 @@
-import Image from "next/image";
-
 export default function Footer() {
   return (
     <footer className="bg-stone px-6 py-10 md:px-10">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center">
-        <Image
-          src="/logo-crema-new.webp"
-          alt="auge.studio"
-          width={2000}
-          height={667}
-          className="h-6 w-auto"
-        />
-
-        <p className="text-sm text-cream/50">Aesthetic Marketing</p>
+        <p className="font-display text-sm font-semibold text-cream/50">
+          Aesthetic Marketing
+        </p>
 
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-cream/60">
           <a href="mailto:info@augestudio.es" className="hover:text-cream">

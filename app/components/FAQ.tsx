@@ -33,8 +33,8 @@ export default function FAQ() {
   return (
     <section className="bg-marfil px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-3xl">
-        <h2 className="text-center font-display text-3xl font-black lowercase tracking-tight text-stone sm:text-4xl">
-          lo que suelen preguntarnos.
+        <h2 className="text-center font-display text-3xl font-black tracking-tight text-stone sm:text-4xl">
+          Lo que suelen preguntarnos.
         </h2>
 
         <div className="mt-14">

@@ -25,8 +25,8 @@ export default function Metodo() {
   return (
     <section id="metodo" className="bg-hueso px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-4xl">
-        <h2 className="max-w-xl font-display text-3xl font-black lowercase tracking-tight text-stone sm:text-4xl">
-          cuatro fases. sabes siempre qué hacemos y por qué.
+        <h2 className="max-w-xl font-display text-3xl font-black tracking-tight text-stone sm:text-4xl">
+          Cuatro fases. Sabes siempre qué hacemos y por qué.
         </h2>
 
         <div className="mt-16 grid gap-8 sm:grid-cols-2">

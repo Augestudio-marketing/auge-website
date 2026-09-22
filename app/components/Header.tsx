@@ -1,10 +1,5 @@
 import Image from "next/image";
 
-const NAV_LINKS = [
-  { href: "#metodo", label: "Método" },
-  { href: "#quien-esta-detras", label: "Quién está detrás" },
-];
-
 export default function Header() {
   return (
     <header className="bg-cream/90 backdrop-blur-md">
@@ -16,20 +11,17 @@ export default function Header() {
             width={2000}
             height={667}
             priority
-            className="h-6 w-auto md:h-7"
+            className="h-9 w-auto md:h-11"
           />
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-stone/70 transition-colors hover:text-burgundy"
-            >
-              {link.label}
-            </a>
-          ))}
+          <a
+            href="#metodo"
+            className="text-sm text-stone/70 transition-colors hover:text-burgundy"
+          >
+            Método
+          </a>
         </nav>
 
         <a

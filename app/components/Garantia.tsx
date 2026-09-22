@@ -2,8 +2,8 @@ export default function Garantia() {
   return (
     <section className="bg-cream px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-4xl">
-        <h2 className="text-center font-display text-3xl font-black lowercase tracking-tight text-stone sm:text-4xl">
-          sin riesgo, sin ataduras.
+        <h2 className="text-center font-display text-3xl font-black tracking-tight text-stone sm:text-4xl">
+          Sin riesgo, sin ataduras.
         </h2>
 
         <div className="mt-16 grid gap-8 md:grid-cols-2">

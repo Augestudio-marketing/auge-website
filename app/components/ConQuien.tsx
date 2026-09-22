@@ -6,12 +6,12 @@ export default function ConQuien() {
   return (
     <section className="bg-hueso px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="font-display text-3xl font-black lowercase tracking-tight text-stone sm:text-4xl">
-          trabajamos con negocios que ya tienen clientela.
+        <h2 className="font-display text-3xl font-black tracking-tight text-stone sm:text-4xl">
+          Trabajamos con negocios que ya tienen clientela.
         </h2>
         <p className="mx-auto mt-6 max-w-xl leading-relaxed text-stone/70">
           No enseñamos a empezar. Entramos donde ya hay algo que hacer
-          crecer: un centro abierto, clientas que confían en tu trabajo y
+          crecer, un centro abierto, clientas que confían en tu trabajo y
           una agenda que podría estar mucho más llena. Si te reconoces,
           hablemos.
         </p>

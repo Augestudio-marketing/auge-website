@@ -208,8 +208,8 @@ export default function QuizCTA() {
       <div className="mx-auto max-w-2xl text-center">
         {paso === "intro" && (
           <>
-            <h2 className="font-display text-3xl font-black lowercase tracking-tight text-cream sm:text-4xl">
-              un plan de crecimiento hecho para tu negocio.
+            <h2 className="font-display text-3xl font-black tracking-tight text-cream sm:text-4xl">
+              Un plan de crecimiento hecho para tu negocio.
             </h2>
             <p className="mx-auto mt-6 max-w-xl leading-relaxed text-cream/70">
               Doce preguntas sobre tu negocio. Recibes tu nota sobre 100 y
