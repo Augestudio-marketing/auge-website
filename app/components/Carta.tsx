@@ -1,24 +1,16 @@
-import Image from "next/image";
+import Reveal from "./Reveal";
 
 export default function Carta() {
   return (
     <section className="bg-marfil px-6 py-28 md:px-10 md:py-36">
-      <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-[280px_1fr] md:items-start">
-        <div className="mx-auto w-full max-w-[260px] overflow-hidden rounded-3xl bg-cream md:mx-0">
-          <Image
-            src="/miriam.webp"
-            alt="Miriam, fundadora de auge.studio"
-            width={1500}
-            height={1500}
-            className="h-auto w-full object-cover"
-          />
-        </div>
-
-        <div>
+      <div className="mx-auto max-w-2xl">
+        <Reveal>
           <h2 className="font-display text-3xl font-black tracking-tight text-stone sm:text-4xl">
             ¿Por qué creamos auge.studio?
           </h2>
+        </Reveal>
 
+        <Reveal delay={100}>
           <div className="mt-10 space-y-6 leading-relaxed text-stone/75">
             <p>
               Un buen centro no debería quedarse pequeño por falta de
@@ -33,9 +25,12 @@ export default function Carta() {
               los sistemas trabajan por ti. Menos caos, más tiempo y un
               crecimiento que no depende de estar encima de todo.
             </p>
-            <p className="rounded-2xl border border-dashed border-stone/25 bg-cream/60 px-6 py-4 text-sm italic text-stone/50">
-              Pendiente: 1–2 frases sobre tu vínculo personal con la
-              belleza.
+            <p>
+              La belleza siempre ha sido terreno conocido para mí. Años
+              probando salones, pidiendo cita tras cita y viendo de cerca
+              lo que separa a un centro que enamora de uno que solo
+              cumple. Ese cariño por el sector es el que pongo en cada
+              proyecto.
             </p>
             <p>
               Para eso existe auge.studio. Para que tu negocio tenga lo que
@@ -44,8 +39,10 @@ export default function Carta() {
             </p>
           </div>
 
-          <p className="font-signature mt-10 text-4xl text-burgundy">Miriam</p>
-        </div>
+          <p className="font-signature mt-10 text-4xl text-burgundy">
+            Miriam
+          </p>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const WHATSAPP_GUIA =
   "https://wa.me/34613803022?text=" +
   encodeURIComponent("Hola, acabo de abrir mi negocio y quiero la guía gratuita de auge.studio.");
@@ -5,7 +7,7 @@ const WHATSAPP_GUIA =
 export default function ConQuien() {
   return (
     <section className="bg-hueso px-6 py-28 md:px-10 md:py-36">
-      <div className="mx-auto max-w-2xl text-center">
+      <Reveal className="mx-auto max-w-2xl text-center">
         <h2 className="font-display text-3xl font-black tracking-tight text-stone sm:text-4xl">
           Trabajamos con negocios que ya tienen clientela.
         </h2>
@@ -18,7 +20,7 @@ export default function ConQuien() {
 
         <a
           href="#diagnostico"
-          className="mt-10 inline-block rounded-full bg-burgundy px-10 py-4 text-sm font-medium uppercase tracking-widest text-cream transition-opacity hover:opacity-90"
+          className="mt-10 inline-block rounded-full bg-burgundy px-10 py-4 text-sm font-medium uppercase tracking-widest text-cream transition-transform hover:scale-[1.03] hover:opacity-90"
         >
           Haz tu diagnóstico
         </a>
@@ -34,7 +36,7 @@ export default function ConQuien() {
             Empieza por nuestra guía gratuita →
           </a>
         </p>
-      </div>
+      </Reveal>
     </section>
   );
 }

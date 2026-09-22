@@ -1,8 +1,26 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 12);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="bg-cream/90 backdrop-blur-md">
+    <header
+      className={`bg-cream/90 backdrop-blur-md transition-shadow duration-300 ${
+        scrolled ? "shadow-sm shadow-stone/10" : ""
+      }`}
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
         <a href="#inicio">
           <Image
@@ -26,7 +44,7 @@ export default function Header() {
 
         <a
           href="#diagnostico"
-          className="whitespace-nowrap rounded-full bg-burgundy px-4 py-2 text-xs font-medium text-cream transition-opacity hover:opacity-90 sm:px-5 sm:text-sm"
+          className="whitespace-nowrap rounded-full bg-burgundy px-4 py-2 text-xs font-medium text-cream transition-transform hover:scale-[1.05] hover:opacity-90 sm:px-5 sm:text-sm"
         >
           <span className="sm:hidden">Diagnóstico</span>
           <span className="hidden sm:inline">Haz tu diagnóstico</span>

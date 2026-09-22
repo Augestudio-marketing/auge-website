@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Reveal from "./Reveal";
 
 const TIPOS_NEGOCIO = [
   "Clínica de medicina estética",
@@ -207,7 +208,7 @@ export default function QuizCTA() {
     <section id="diagnostico" className="bg-burgundy px-6 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-2xl text-center">
         {paso === "intro" && (
-          <>
+          <Reveal>
             <h2 className="font-display text-3xl font-black tracking-tight text-cream sm:text-4xl">
               Un plan de crecimiento hecho para tu negocio.
             </h2>
@@ -241,7 +242,7 @@ export default function QuizCTA() {
             >
               Empezar mi diagnóstico
             </button>
-          </>
+          </Reveal>
         )}
 
         {typeof paso === "number" && (

@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const WHATSAPP_URL =
   "https://wa.me/34613803022?text=" +
   encodeURIComponent("Hola, quiero probar cómo funciona auge.studio.");
@@ -5,7 +7,7 @@ const WHATSAPP_URL =
 export default function PruebaloTu() {
   return (
     <section className="bg-cream px-6 py-24 md:px-10 md:py-32">
-      <div className="mx-auto max-w-2xl text-center">
+      <Reveal className="mx-auto max-w-2xl text-center">
         <h2 className="font-display text-3xl font-black tracking-tight text-stone sm:text-4xl">
           No te lo contamos. Pruébalo.
         </h2>
@@ -18,11 +20,11 @@ export default function PruebaloTu() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-10 inline-block rounded-full bg-burgundy px-10 py-4 text-sm font-medium uppercase tracking-widest text-cream transition-opacity hover:opacity-90"
+          className="mt-10 inline-block rounded-full bg-burgundy px-10 py-4 text-sm font-medium uppercase tracking-widest text-cream transition-transform hover:scale-[1.03] hover:opacity-90"
         >
           Escribir al WhatsApp de auge.studio
         </a>
-      </div>
+      </Reveal>
     </section>
   );
 }
