@@ -12,8 +12,9 @@ const config: Config = {
         stone: "#2B2622",
       },
       fontFamily: {
-        serif: ["var(--font-serif)"],
+        display: ["var(--font-display)"],
         sans: ["var(--font-inter)"],
+        signature: ["var(--font-signature)"],
       },
       letterSpacing: {
         widest2: "0.35em",

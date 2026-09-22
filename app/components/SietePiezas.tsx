@@ -1,0 +1,63 @@
+const PIEZAS = [
+  {
+    titulo: "Web de marca a medida.",
+    texto: "Diseñada y programada desde cero para tu centro. Nada de plantillas.",
+  },
+  {
+    titulo: "Reservas online.",
+    texto: "Tus clientas reservan a cualquier hora, sin llamar ni esperar respuesta.",
+  },
+  {
+    titulo: "WhatsApp que responde solo.",
+    texto: "Resuelve dudas sobre servicios, precios y horarios con el tono de tu marca.",
+  },
+  {
+    titulo: "Reseñas automáticas.",
+    texto: "Cada visita termina con una petición de reseña en el momento justo.",
+  },
+  {
+    titulo: "Clientas que vuelven.",
+    texto: "Mensajes de recuperación ajustados al ritmo de cada tratamiento.",
+  },
+  {
+    titulo: "Contenido y redes.",
+    texto: "Publicaciones y stories cada mes, alineadas con tu marca y tus campañas.",
+  },
+  {
+    titulo: "Publicidad.",
+    texto: "Campañas en Google y Meta medidas en lo que importa: coste por reserva.",
+  },
+];
+
+export default function SietePiezas() {
+  return (
+    <section className="bg-cream px-6 py-28 md:px-10 md:py-36">
+      <div className="mx-auto max-w-5xl">
+        <h2 className="max-w-2xl font-display text-3xl font-black lowercase tracking-tight text-stone sm:text-4xl">
+          todo lo que tu negocio necesita para crecer. instalado dentro.
+        </h2>
+
+        <div className="mt-16 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          {PIEZAS.map((pieza, i) => (
+            <div key={pieza.titulo} className="border-t border-stone/15 pt-6">
+              <span className="font-display text-sm font-light text-burgundy">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-3 font-display text-lg font-semibold text-stone">
+                {pieza.titulo}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-stone/65">
+                {pieza.texto}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <p className="mx-auto mt-16 max-w-2xl text-center font-display text-xl font-light leading-snug text-stone sm:text-2xl">
+          Por separado, son cuatro proveedores que no se hablan. Con
+          nosotras, un solo sistema y una sola interlocutora.
+        </p>
+      </div>
+    </section>
+  );
+}

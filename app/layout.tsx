@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Poppins, Inter, Caveat } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-serif",
-  style: ["normal", "italic"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-display",
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-signature",
+  weight: ["600"],
   display: "swap",
 });
 
@@ -19,15 +25,15 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://augestudio.es"),
-  title: "AUGE. — Sistema Auge para peluquerías y salones de belleza",
+  title: "auge.studio — llenamos la agenda de los negocios de belleza y estética",
   description:
-    "Web a medida, reservas online, WhatsApp que responde solo, reseñas y clientas que vuelven. El sistema que gestiona tu marketing para que tú solo atiendas a tus clientas.",
+    "Web, reservas, WhatsApp que responde solo, reseñas, fidelización y publicidad. Lo instalamos dentro de tu negocio y lo gestionamos cada mes.",
   openGraph: {
-    title: "AUGE. — Sistema Auge para peluquerías y salones de belleza",
+    title: "auge.studio — llenamos la agenda de los negocios de belleza y estética",
     description:
-      "Web a medida, reservas online, WhatsApp que responde solo, reseñas y clientas que vuelven.",
+      "Web, reservas, WhatsApp que responde solo, reseñas, fidelización y publicidad. Lo instalamos dentro de tu negocio y lo gestionamos cada mes.",
     url: "https://augestudio.es",
-    siteName: "AUGE. Aesthetic Marketing Studio",
+    siteName: "auge.studio",
     locale: "es_ES",
     type: "website",
   },
@@ -40,7 +46,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${playfair.variable} ${inter.variable} font-sans antialiased`}>
+      <body
+        className={`${poppins.variable} ${inter.variable} ${caveat.variable} font-sans antialiased`}
+      >
         {children}
       </body>
     </html>

@@ -36,7 +36,7 @@ export default function Accordion({
               onClick={() => setOpenId(isOpen ? null : item.id)}
               className={`flex w-full items-center justify-between gap-6 py-6 text-left ${textClass}`}
             >
-              <span className="font-serif text-xl sm:text-2xl">
+              <span className="font-display text-xl sm:text-2xl">
                 {item.header}
               </span>
               <span
