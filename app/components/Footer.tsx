@@ -19,12 +19,12 @@ export default function Footer() {
             +34 613 80 30 22
           </a>
           <a
-            href="https://instagram.com/auge.aesthetic"
+            href="https://instagram.com/augestudio.es"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-cream"
           >
-            @auge.aesthetic
+            @augestudio.es
           </a>
         </div>
 
