@@ -4,6 +4,7 @@ import Carrusel from "./components/Carrusel";
 import Carta from "./components/Carta";
 import SietePiezas from "./components/SietePiezas";
 import Cifras from "./components/Cifras";
+import PruebaloTu from "./components/PruebaloTu";
 import Metodo from "./components/Metodo";
 import QuienSomos from "./components/QuienSomos";
 import QuizCTA from "./components/QuizCTA";
@@ -11,6 +12,7 @@ import ConQuien from "./components/ConQuien";
 import Garantia from "./components/Garantia";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
 export default function Home() {
   return (
@@ -28,6 +30,7 @@ export default function Home() {
         <Carta />
         <SietePiezas />
         <Cifras />
+        <PruebaloTu />
         <Metodo />
         <QuienSomos />
         <QuizCTA />
@@ -36,6 +39,8 @@ export default function Home() {
         <FAQ />
         <Footer />
       </div>
+
+      <FloatingWhatsApp />
     </main>
   );
 }
