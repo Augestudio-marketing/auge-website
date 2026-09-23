@@ -44,7 +44,7 @@ export default function Header() {
 
         <a
           href="#diagnostico"
-          className="whitespace-nowrap rounded-full bg-burgundy px-4 py-2 text-xs font-medium text-cream transition-transform hover:scale-[1.05] hover:opacity-90 sm:px-5 sm:text-sm"
+          className="whitespace-nowrap rounded-full border border-burgundy bg-burgundy px-4 py-2 text-xs text-cream transition-colors duration-300 hover:bg-transparent hover:text-burgundy sm:px-5 sm:text-sm"
         >
           <span className="sm:hidden">Diagnóstico</span>
           <span className="hidden sm:inline">Haz tu diagnóstico</span>

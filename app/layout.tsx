@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Poppins, Inter, Caveat } from "next/font/google";
+import { DM_Serif_Display, Inter, Caveat } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
+const displaySerif = DM_Serif_Display({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -47,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${poppins.variable} ${inter.variable} ${caveat.variable} font-sans antialiased`}
+        className={`${displaySerif.variable} ${inter.variable} ${caveat.variable} font-sans antialiased`}
       >
         {children}
       </body>

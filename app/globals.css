@@ -33,39 +33,6 @@ body {
   animation: marquee 28s linear infinite;
 }
 
-.bg-burgundy-glow {
-  background:
-    radial-gradient(circle at 15% 20%, #7a2426 0%, transparent 45%),
-    radial-gradient(circle at 85% 85%, #7a2426 0%, transparent 50%),
-    #2b0f10;
-}
-
-@keyframes float-a {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(6%, 8%) scale(1.15);
-  }
-}
-
-@keyframes float-b {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-8%, -6%) scale(1.1);
-  }
-}
-
-.animate-float-a {
-  animation: float-a 16s ease-in-out infinite;
-}
-
-.animate-float-b {
-  animation: float-b 20s ease-in-out infinite;
-}
-
 @keyframes fade-in-up {
   from {
     opacity: 0;

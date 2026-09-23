@@ -225,28 +225,32 @@ export default function QuizCTA() {
       <div className="mx-auto max-w-2xl text-center">
         {paso === "intro" && (
           <Reveal>
-            <h2 className="font-display text-3xl font-black tracking-tight text-cream sm:text-4xl">
-              Un plan de crecimiento hecho para tu negocio.
+            <h2 className="font-display text-3xl leading-tight text-cream sm:text-4xl md:text-5xl">
+              Antes de cambiar nada,
+              <br />
+              <span className="italic">mira dónde estás.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl leading-relaxed text-cream/70">
-              Doce preguntas sobre tu negocio. Recibes tu nota sobre 100 y
-              las dos fugas por las que hoy pierdes más clientas. Después,
-              en una sesión conmigo, convertimos eso en tu plan de los
-              próximos 90 días. Es tuyo aunque no llegues a contratarnos.
+              Hemos creado un diagnóstico para descubrir qué está frenando
+              hoy a tu negocio. Doce preguntas. Unos minutos. Y una visión
+              clara de dónde estás perdiendo tiempo y oportunidades.
             </p>
 
             <div className="mx-auto mt-10 max-w-md overflow-hidden rounded-3xl bg-cream/10 text-left">
               {[
-                ["Tu nota sobre 100", "En pantalla, al terminar"],
-                ["Tus 2 fugas principales", "En pantalla y por email"],
-                ["Tu plan de 90 días", "En una sesión de 30 minutos, gratis"],
-              ].map(([que, cuando]) => (
+                ["01", "Tu punto de partida", "Dónde estás hoy."],
+                ["02", "Tus principales fugas", "Qué está haciendo que pierdas oportunidades."],
+                ["03", "Tu próximo paso", "Qué tendría sentido mejorar durante los próximos 90 días."],
+              ].map(([num, titulo, texto]) => (
                 <div
-                  key={que}
-                  className="flex items-center justify-between gap-4 border-b border-cream/10 px-6 py-4 text-sm last:border-0"
+                  key={titulo}
+                  className="flex gap-4 border-b border-cream/10 px-6 py-5 text-sm last:border-0"
                 >
-                  <span className="text-cream">{que}</span>
-                  <span className="text-right text-cream/55">{cuando}</span>
+                  <span className="font-display italic text-cream/50">{num}</span>
+                  <div>
+                    <p className="text-cream">{titulo}</p>
+                    <p className="mt-1 text-cream/55">{texto}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -254,10 +258,13 @@ export default function QuizCTA() {
             <button
               type="button"
               onClick={() => setPaso(0)}
-              className="mt-10 inline-block rounded-full bg-cream px-10 py-4 text-sm font-medium uppercase tracking-widest text-stone transition-opacity hover:opacity-90"
+              className="mt-10 inline-block rounded-full border border-cream bg-cream px-10 py-4 text-sm uppercase tracking-widest text-burgundy transition-colors duration-300 hover:bg-transparent hover:text-cream"
             >
-              Empezar mi diagnóstico
+              Hacer mi diagnóstico
             </button>
+            <p className="mt-4 text-xs uppercase tracking-widest text-cream/45">
+              Gratis · Sin compromiso
+            </p>
           </Reveal>
         )}
 
@@ -273,7 +280,7 @@ export default function QuizCTA() {
               />
             </div>
 
-            <h3 className="mt-10 text-center font-display text-2xl font-semibold text-cream sm:text-3xl">
+            <h3 className="mt-10 text-center font-display text-2xl italic text-cream sm:text-3xl">
               {QUESTIONS[paso].pregunta}
             </h3>
 
@@ -304,7 +311,7 @@ export default function QuizCTA() {
 
         {paso === "lead" && (
           <div className="grain mx-auto max-w-md rounded-3xl bg-cream px-8 py-10 text-left md:px-10">
-            <p className="text-center font-display text-2xl font-semibold text-stone">
+            <p className="text-center font-display text-2xl italic text-stone">
               Ya casi está.
             </p>
             <p className="mt-2 text-center text-sm text-stone/60">
@@ -387,7 +394,7 @@ export default function QuizCTA() {
 
               <button
                 type="submit"
-                className="w-full rounded-full bg-stone py-3 text-sm uppercase tracking-widest text-cream transition-opacity hover:opacity-85"
+                className="w-full rounded-full border border-stone bg-stone py-3 text-sm uppercase tracking-widest text-cream transition-colors duration-300 hover:bg-transparent hover:text-stone"
               >
                 Ver mi diagnóstico
               </button>
@@ -400,16 +407,16 @@ export default function QuizCTA() {
             <p className="text-center text-xs uppercase tracking-widest text-stone/45">
               Tu diagnóstico, {lead.nombre}
             </p>
-            <p className="mt-4 text-center font-display text-6xl font-black text-burgundy">
+            <p className="mt-4 text-center font-display text-6xl italic text-burgundy">
               {nota}
-              <span className="text-2xl text-stone/40">/100</span>
+              <span className="text-2xl not-italic text-stone/40">/100</span>
             </p>
 
             <div className="mt-8 space-y-5">
               {topFugas.length > 0 ? (
                 topFugas.map((f) => (
                   <div key={f.id}>
-                    <p className="font-display text-lg font-semibold text-stone">
+                    <p className="font-display text-lg italic text-stone">
                       {f.titulo}
                     </p>
                     <p className="mt-1 text-sm leading-relaxed text-stone/70">
@@ -429,7 +436,7 @@ export default function QuizCTA() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 block w-full rounded-full bg-burgundy py-3 text-center text-sm uppercase tracking-widest text-cream transition-opacity hover:opacity-90"
+              className="mt-8 block w-full rounded-full border border-burgundy bg-burgundy py-3 text-center text-sm uppercase tracking-widest text-cream transition-colors duration-300 hover:bg-transparent hover:text-burgundy"
             >
               Reservar mi sesión de 30 minutos
             </a>

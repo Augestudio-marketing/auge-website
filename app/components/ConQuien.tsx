@@ -6,26 +6,23 @@ const WHATSAPP_RECIEN_ABIERTO =
 
 export default function ConQuien() {
   return (
-    <section className="bg-hueso px-6 py-28 md:px-10 md:py-36">
+    <section className="bg-hueso px-6 py-28 md:px-10 md:py-40">
       <Reveal className="mx-auto max-w-2xl text-center">
-        <h2 className="font-display text-3xl font-black tracking-tight text-stone sm:text-4xl">
-          Trabajamos con negocios que ya tienen clientela.
+        <h2 className="font-display text-3xl leading-tight text-stone sm:text-4xl md:text-5xl">
+          AUGE no es para todo el mundo.
         </h2>
         <p className="mx-auto mt-6 max-w-xl leading-relaxed text-stone/70">
-          No enseñamos a empezar. Entramos donde ya hay algo que hacer
-          crecer, un centro abierto, clientas que confían en tu trabajo y
-          una agenda que podría estar mucho más llena. Si te reconoces,
-          hablemos.
+          Y está bien. Trabajamos con negocios que ya tienen algo que
+          cuidar. Una cartera de clientas. Una reputación. Un equipo. Un
+          espacio. Y la sensación de que podrían estar a otro nivel si no
+          tuvieran que estar pendientes de todo.
         </p>
 
-        <a
-          href="#diagnostico"
-          className="mt-10 inline-block rounded-full bg-burgundy px-10 py-4 text-sm font-medium uppercase tracking-widest text-cream transition-transform hover:scale-[1.03] hover:opacity-90"
-        >
-          Haz tu diagnóstico
-        </a>
+        <p className="mx-auto mt-8 max-w-md font-display text-xl italic text-burgundy">
+          Si te suena, probablemente hablemos el mismo idioma.
+        </p>
 
-        <p className="mt-6 text-sm text-stone/50">
+        <p className="mt-8 text-sm text-stone/50">
           ¿Acabas de abrir?{" "}
           <a
             href={WHATSAPP_RECIEN_ABIERTO}

@@ -9,6 +9,7 @@ const config: Config = {
         marfil: "#F0EAE0",
         hueso: "#EBE2D0",
         burgundy: "#5C1A1B",
+        "burgundy-deep": "#3D1014",
         stone: "#2B2622",
       },
       fontFamily: {

@@ -1,14 +1,20 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Carrusel from "./components/Carrusel";
-import Carta from "./components/Carta";
+import Problema from "./components/Problema";
+import Giro from "./components/Giro";
+import Presentacion from "./components/Presentacion";
+import Sistema from "./components/Sistema";
 import SietePiezas from "./components/SietePiezas";
-import Cifras from "./components/Cifras";
+import Manifiesto from "./components/Manifiesto";
 import Metodo from "./components/Metodo";
+import Miriam from "./components/Miriam";
 import QuizCTA from "./components/QuizCTA";
 import ConQuien from "./components/ConQuien";
+import Propiedad from "./components/Propiedad";
 import Garantia from "./components/Garantia";
 import FAQ from "./components/FAQ";
+import CTAFinal from "./components/CTAFinal";
 import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
@@ -25,14 +31,20 @@ export default function Home() {
       <div>
         <Hero />
         <Carrusel />
-        <Carta />
+        <Problema />
+        <Giro />
+        <Presentacion />
+        <Sistema />
         <SietePiezas />
-        <Cifras />
+        <Manifiesto />
         <Metodo />
-        <QuizCTA />
+        <Miriam />
         <ConQuien />
+        <QuizCTA />
+        <Propiedad />
         <Garantia />
         <FAQ />
+        <CTAFinal />
         <Footer />
       </div>
 

@@ -3,24 +3,28 @@ import Reveal from "./Reveal";
 
 const PREGUNTAS = [
   {
-    q: "¿Cuánto cuesta?",
-    a: "Depende de tu negocio y de lo que necesite, por eso empezamos con el diagnóstico. Como referencia, los proyectos parten de 600 € de arranque y 90 € al mes.",
+    q: "¿Y si no entiendo nada de tecnología?",
+    a: "No necesitas entenderla. Nosotras nos encargamos de la parte técnica. Tú solo necesitas saber cómo quieres que funcione tu negocio.",
   },
   {
-    q: "No sé nada de tecnología.",
-    a: "No tienes que saber. Lo montamos todo y te lo explicamos en 30 minutos. Para lo demás, nos escribes por WhatsApp.",
+    q: "¿Tengo que cambiar mi sistema de reservas?",
+    a: "No necesariamente. Primero vemos cómo trabajas y qué tiene sentido para ti.",
   },
   {
-    q: "Tengo una clínica de medicina estética. ¿También es para mí?",
-    a: "Sí. Adaptamos los mensajes, la web y la publicidad a las normas de publicidad sanitaria de tu comunidad.",
+    q: "¿Trabajáis con cualquier negocio?",
+    a: "Trabajamos principalmente con negocios de servicios que dependen de una agenda: belleza, estética, clínicas, fisioterapia, psicología, bienestar y negocios similares.",
   },
   {
-    q: "¿Y si me quiero ir?",
-    a: "Tras los 3 primeros meses, te das de baja con 30 días de preaviso y te llevas tu web, tu dominio y tus contactos.",
+    q: "¿La web y el dominio son míos?",
+    a: "Sí. Tu marca es tuya desde el primer día.",
+  },
+  {
+    q: "¿Tengo que contratarlo todo?",
+    a: "No. Analizamos tu situación y construimos lo que realmente necesitas.",
   },
   {
     q: "¿Trabajáis fuera de Murcia?",
-    a: "Sí, en toda España. En la Región de Murcia, la primera reunión puede ser en tu centro.",
+    a: "Sí. Trabajamos online con negocios de toda España.",
   },
 ];
 
@@ -32,10 +36,10 @@ export default function FAQ() {
   }));
 
   return (
-    <section className="bg-marfil px-6 py-28 md:px-10 md:py-36">
+    <section className="bg-marfil px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <h2 className="text-center font-display text-3xl font-black tracking-tight text-stone sm:text-4xl">
+          <h2 className="text-center font-display text-3xl leading-tight text-stone sm:text-4xl">
             Lo que suelen preguntarnos.
           </h2>
         </Reveal>

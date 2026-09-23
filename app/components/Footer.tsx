@@ -1,12 +1,18 @@
 export default function Footer() {
   return (
     <footer className="bg-stone px-6 py-10 md:px-10">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center">
-        <p className="font-display text-sm font-semibold text-cream/50">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 text-center">
+        <p className="font-display text-lg italic text-cream/70">
+          auge.studio
+        </p>
+        <p className="text-xs uppercase tracking-widest text-cream/45">
           Aesthetic Marketing
         </p>
+        <p className="text-xs uppercase tracking-widest text-cream/35">
+          Branding · Web · Social Media · Automatización · Captación
+        </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-cream/60">
+        <div className="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-cream/60">
           <a href="mailto:info@augestudio.es" className="hover:text-cream">
             info@augestudio.es
           </a>
