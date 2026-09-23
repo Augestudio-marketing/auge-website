@@ -220,6 +220,10 @@ export default function QuizCTA() {
   const resumenWhatsapp = `Hola, soy ${lead.nombre || ""} de ${lead.negocio || "mi negocio"} (${lead.ciudad || ""}). Acabo de hacer el diagnóstico de AUGE (nota: ${nota}/100) y me gustaría reservar mi sesión.`;
   const whatsappHref = "https://wa.me/34613803022?text=" + encodeURIComponent(resumenWhatsapp);
 
+  const bookingHref =
+    "https://reservas.augestudio.es/widget/booking/rgSqYKMKHnl3xaUXD4WM" +
+    `?email=${encodeURIComponent(lead.email)}&phone=${encodeURIComponent(lead.whatsapp)}`;
+
   return (
     <section id="diagnostico" className="bg-burgundy px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-2xl text-center">
@@ -433,12 +437,20 @@ export default function QuizCTA() {
             </div>
 
             <a
-              href={whatsappHref}
+              href={bookingHref}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 block w-full rounded-full border border-burgundy bg-burgundy py-3 text-center text-sm uppercase tracking-widest text-cream transition-colors duration-300 hover:bg-transparent hover:text-burgundy"
             >
               Reservar mi sesión de 30 minutos
+            </a>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 block text-center text-xs uppercase tracking-widest text-stone/45 hover:text-burgundy"
+            >
+              Prefiero escribir por WhatsApp
             </a>
           </div>
         )}
