@@ -176,11 +176,6 @@ export default function QuizCTA() {
     }
   }
 
-  function handleLeadSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setPaso("resultado");
-  }
-
   const evaluadas = Object.entries(FUGAS).map(([id, f]) => {
     const opcion = respuestas[id];
     return {
@@ -200,6 +195,27 @@ export default function QuizCTA() {
     .filter((e) => e.severidad > 0)
     .sort((a, b) => b.severidad / b.max - a.severidad / a.max)
     .slice(0, 2);
+
+  function handleLeadSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setPaso("resultado");
+
+    fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nombre: lead.nombre,
+        negocio: lead.negocio,
+        ciudad: lead.ciudad,
+        email: lead.email,
+        whatsapp: lead.whatsapp,
+        tipoNegocio: respuestas.negocio,
+        nota,
+        fugaPrincipal: topFugas[0]?.titulo ?? "",
+        fugaSecundaria: topFugas[1]?.titulo ?? "",
+      }),
+    }).catch((error) => console.error("Error enviando el lead a GHL", error));
+  }
 
   const resumenWhatsapp = `Hola, soy ${lead.nombre || ""} de ${lead.negocio || "mi negocio"} (${lead.ciudad || ""}). Acabo de hacer el diagnóstico de auge.studio (nota: ${nota}/100) y me gustaría reservar mi sesión.`;
   const whatsappHref = "https://wa.me/34613803022?text=" + encodeURIComponent(resumenWhatsapp);
