@@ -16,8 +16,8 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-col items-center">
         <h1 className="animate-fade-in-up max-w-3xl font-display text-4xl font-black leading-tight tracking-tight text-cream sm:text-5xl md:text-6xl">
-          Llenamos la agenda de tu peluquería, tu salón de uñas o tu centro
-          de belleza.
+          Llenamos la agenda de tu clínica, tu centro de estética o tu
+          peluquería.
         </h1>
 
         <p

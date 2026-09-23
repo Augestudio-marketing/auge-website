@@ -1,8 +1,8 @@
 import Reveal from "./Reveal";
 
-const WHATSAPP_GUIA =
+const WHATSAPP_RECIEN_ABIERTO =
   "https://wa.me/34613803022?text=" +
-  encodeURIComponent("Hola, acabo de abrir mi negocio y quiero la guía gratuita de auge.studio.");
+  encodeURIComponent("Hola, acabo de abrir mi negocio y quiero saber si auge.studio encaja conmigo.");
 
 export default function ConQuien() {
   return (
@@ -28,12 +28,12 @@ export default function ConQuien() {
         <p className="mt-6 text-sm text-stone/50">
           ¿Acabas de abrir?{" "}
           <a
-            href={WHATSAPP_GUIA}
+            href={WHATSAPP_RECIEN_ABIERTO}
             target="_blank"
             rel="noopener noreferrer"
             className="text-burgundy underline underline-offset-2 hover:no-underline"
           >
-            Empieza por nuestra guía gratuita →
+            Escríbenos y te decimos si encajamos →
           </a>
         </p>
       </Reveal>

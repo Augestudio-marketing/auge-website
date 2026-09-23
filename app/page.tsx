@@ -4,7 +4,6 @@ import Carrusel from "./components/Carrusel";
 import Carta from "./components/Carta";
 import SietePiezas from "./components/SietePiezas";
 import Cifras from "./components/Cifras";
-import PruebaloTu from "./components/PruebaloTu";
 import Metodo from "./components/Metodo";
 import QuizCTA from "./components/QuizCTA";
 import ConQuien from "./components/ConQuien";
@@ -29,7 +28,6 @@ export default function Home() {
         <Carta />
         <SietePiezas />
         <Cifras />
-        <PruebaloTu />
         <Metodo />
         <QuizCTA />
         <ConQuien />
