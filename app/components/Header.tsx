@@ -22,7 +22,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
-        <a href="#inicio">
+        <a href="/">
           <Image
             src="/logo-burdeos.webp"
             alt="auge.studio"
@@ -35,15 +35,21 @@ export default function Header() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           <a
-            href="#metodo"
+            href="/#metodo"
             className="text-sm text-stone/70 transition-colors hover:text-burgundy"
           >
             Método
           </a>
+          <a
+            href="/planes"
+            className="text-sm text-stone/70 transition-colors hover:text-burgundy"
+          >
+            Planes
+          </a>
         </nav>
 
         <a
-          href="#diagnostico"
+          href="/#diagnostico"
           className="whitespace-nowrap rounded-full border border-burgundy bg-burgundy px-4 py-2 text-xs text-cream transition-colors duration-300 hover:bg-transparent hover:text-burgundy sm:px-5 sm:text-sm"
         >
           <span className="sm:hidden">Diagnóstico</span>
