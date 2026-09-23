@@ -20,9 +20,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Faltan datos obligatorios" }, { status: 400 });
   }
 
-  const apiKey = process.env.GHL_API_KEY;
+  const apiKey = process.env.contactsghl;
   if (!apiKey) {
-    console.error("Falta la variable de entorno GHL_API_KEY");
+    console.error("Falta la variable de entorno contactsghl");
     return NextResponse.json({ error: "Integración no configurada" }, { status: 500 });
   }
 
