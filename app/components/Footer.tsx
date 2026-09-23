@@ -2,9 +2,6 @@ export default function Footer() {
   return (
     <footer className="bg-stone px-6 py-10 md:px-10">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 text-center">
-        <p className="font-display text-lg italic text-cream/70">
-          auge.studio
-        </p>
         <p className="text-xs uppercase tracking-widest text-cream/45">
           Aesthetic Marketing
         </p>
@@ -46,7 +43,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <p className="text-xs text-cream/35">© 2026 auge.studio</p>
+        <p className="text-xs text-cream/35">© 2026 AUGE</p>
       </div>
     </footer>
   );

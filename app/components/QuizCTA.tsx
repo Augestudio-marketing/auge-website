@@ -217,11 +217,11 @@ export default function QuizCTA() {
     }).catch((error) => console.error("Error enviando el lead a GHL", error));
   }
 
-  const resumenWhatsapp = `Hola, soy ${lead.nombre || ""} de ${lead.negocio || "mi negocio"} (${lead.ciudad || ""}). Acabo de hacer el diagnóstico de auge.studio (nota: ${nota}/100) y me gustaría reservar mi sesión.`;
+  const resumenWhatsapp = `Hola, soy ${lead.nombre || ""} de ${lead.negocio || "mi negocio"} (${lead.ciudad || ""}). Acabo de hacer el diagnóstico de AUGE (nota: ${nota}/100) y me gustaría reservar mi sesión.`;
   const whatsappHref = "https://wa.me/34613803022?text=" + encodeURIComponent(resumenWhatsapp);
 
   return (
-    <section id="diagnostico" className="bg-burgundy px-6 py-28 md:px-10 md:py-36">
+    <section id="diagnostico" className="bg-burgundy px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-2xl text-center">
         {paso === "intro" && (
           <Reveal>
@@ -388,7 +388,7 @@ export default function QuizCTA() {
                   onChange={(e) => setLead({ ...lead, consentimiento: e.target.checked })}
                   className="mt-0.5"
                 />
-                Acepto recibir comunicaciones de auge.studio sobre mi
+                Acepto recibir comunicaciones de AUGE sobre mi
                 diagnóstico.
               </label>
 

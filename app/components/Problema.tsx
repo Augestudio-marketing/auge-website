@@ -2,7 +2,7 @@ import Reveal from "./Reveal";
 
 export default function Problema() {
   return (
-    <section className="bg-marfil px-6 py-28 md:px-10 md:py-40">
+    <section className="bg-marfil px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <p className="text-xs uppercase tracking-widest text-burgundy">

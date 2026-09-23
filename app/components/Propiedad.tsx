@@ -2,7 +2,7 @@ import Reveal from "./Reveal";
 
 export default function Propiedad() {
   return (
-    <section className="bg-cream px-6 py-28 md:px-10 md:py-40">
+    <section className="bg-cream px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-2xl text-center">
         <Reveal>
           <h2 className="font-display text-3xl leading-tight text-stone sm:text-4xl md:text-5xl">

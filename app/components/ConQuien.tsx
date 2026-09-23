@@ -2,11 +2,11 @@ import Reveal from "./Reveal";
 
 const WHATSAPP_RECIEN_ABIERTO =
   "https://wa.me/34613803022?text=" +
-  encodeURIComponent("Hola, acabo de abrir mi negocio y quiero saber si auge.studio encaja conmigo.");
+  encodeURIComponent("Hola, acabo de abrir mi negocio y quiero saber si AUGE encaja conmigo.");
 
 export default function ConQuien() {
   return (
-    <section className="bg-hueso px-6 py-28 md:px-10 md:py-40">
+    <section className="bg-hueso px-6 py-20 md:px-10 md:py-28">
       <Reveal className="mx-auto max-w-2xl text-center">
         <h2 className="font-display text-3xl leading-tight text-stone sm:text-4xl md:text-5xl">
           AUGE no es para todo el mundo.

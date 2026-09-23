@@ -1,6 +1,6 @@
 const WHATSAPP_URL =
   "https://wa.me/34613803022?text=" +
-  encodeURIComponent("Hola, tengo una pregunta sobre auge.studio.");
+  encodeURIComponent("Hola, tengo una pregunta sobre AUGE.");
 
 export default function FloatingWhatsApp() {
   return (

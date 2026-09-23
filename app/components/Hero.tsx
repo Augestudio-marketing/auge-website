@@ -1,19 +1,15 @@
+const WHATSAPP_CONOCER =
+  "https://wa.me/34613803022?text=" + encodeURIComponent("Hola, quiero conocer AUGE.");
+
 export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[85vh] flex-col justify-center overflow-hidden bg-marfil px-6 pb-20 pt-16 md:min-h-screen md:px-10 md:pb-24"
+      className="relative flex min-h-[70vh] flex-col justify-center overflow-hidden bg-marfil px-6 pb-16 pt-16 md:min-h-[80vh] md:px-10 md:pb-20"
     >
       <div className="grain absolute inset-0 opacity-60" aria-hidden />
 
-      <p
-        className="animate-fade-in-up relative z-10 font-display text-2xl italic text-burgundy"
-        style={{ animationDelay: "0ms" }}
-      >
-        auge.studio
-      </p>
-
-      <h1 className="relative z-10 mt-8 max-w-4xl font-display text-4xl leading-[1.1] tracking-tight text-stone sm:text-6xl md:text-7xl">
+      <h1 className="relative z-10 max-w-4xl font-display text-4xl leading-[1.1] tracking-tight text-stone sm:text-6xl md:text-7xl">
         <span className="animate-fade-in-up block" style={{ animationDelay: "150ms" }}>
           Tu negocio merece estar
         </span>
@@ -45,13 +41,15 @@ export default function Hero() {
         style={{ animationDelay: "900ms" }}
       >
         <a
-          href="#diagnostico"
+          href={WHATSAPP_CONOCER}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-block rounded-full border border-burgundy bg-transparent px-10 py-4 text-sm uppercase tracking-widest text-burgundy transition-colors duration-300 hover:bg-burgundy hover:text-marfil"
         >
           Quiero conocer AUGE
         </a>
         <p className="text-xs uppercase tracking-widest text-stone/45">
-          Diagnóstico gratuito · Sin compromiso
+          Hablamos por WhatsApp · Sin compromiso
         </p>
       </div>
     </section>

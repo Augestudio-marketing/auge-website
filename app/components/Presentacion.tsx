@@ -12,11 +12,11 @@ const PUNTOS = [
 
 export default function Presentacion() {
   return (
-    <section className="bg-marfil px-6 py-28 md:px-10 md:py-40">
+    <section className="bg-marfil px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <p className="text-xs uppercase tracking-widest text-burgundy">
-            Conoce auge.studio
+            Conoce AUGE
           </p>
         </Reveal>
 
@@ -32,7 +32,7 @@ export default function Presentacion() {
 
         <Reveal delay={160}>
           <p className="mt-10 leading-relaxed text-stone/70">
-            En auge.studio unimos marca, presencia digital y sistemas para
+            En AUGE unimos marca, presencia digital y sistemas para
             que tu negocio no dependa de ti para cada pequeño detalle.
           </p>
         </Reveal>

@@ -2,7 +2,7 @@ import Reveal from "./Reveal";
 
 export default function Miriam() {
   return (
-    <section className="bg-cream px-6 py-28 md:px-10 md:py-40">
+    <section className="bg-cream px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="font-display text-3xl leading-tight text-stone sm:text-4xl md:text-5xl">
@@ -29,7 +29,7 @@ export default function Miriam() {
               capacidad para crecer.
             </p>
             <p>
-              De ahí nace auge.studio. Para llevar esa forma de trabajar a
+              De ahí nace AUGE. Para llevar esa forma de trabajar a
               negocios que han construido algo que merece crecer.
             </p>
           </div>
@@ -38,7 +38,7 @@ export default function Miriam() {
             Miriam
           </p>
           <p className="text-xs uppercase tracking-widest text-stone/45">
-            Founder · auge.studio
+            Founder · AUGE
           </p>
         </Reveal>
       </div>

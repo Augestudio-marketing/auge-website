@@ -17,7 +17,7 @@ const LINEAS_MAS = [
 
 export default function Manifiesto() {
   return (
-    <section className="bg-burgundy px-6 py-32 text-center md:px-10 md:py-44">
+    <section className="bg-burgundy px-6 py-24 text-center md:px-10 md:py-32">
       <div className="mx-auto max-w-2xl">
         <Reveal>
           <h2 className="font-display text-3xl leading-tight text-cream sm:text-4xl md:text-5xl">

@@ -2,7 +2,7 @@ import Reveal from "./Reveal";
 
 export default function Giro() {
   return (
-    <section className="bg-burgundy-deep px-6 py-32 text-center md:px-10 md:py-44">
+    <section className="bg-burgundy-deep px-6 py-24 text-center md:px-10 md:py-32">
       <div className="mx-auto max-w-3xl">
         <Reveal>
           <p className="font-display text-2xl text-cream/70 sm:text-3xl">
