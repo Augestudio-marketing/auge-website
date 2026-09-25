@@ -20,10 +20,7 @@ export default function Miriam() {
 
         <Reveal delay={160}>
           <div className="mt-10 border-t border-stone/20 pt-6">
-            <p className="text-sm font-semibold uppercase tracking-widest text-stone">
-              Miriam Souidi
-            </p>
-            <p className="mt-1 text-xs uppercase tracking-widest text-stone/50">
+            <p className="text-xs uppercase tracking-widest text-stone/50">
               Founder · auge.studio
             </p>
           </div>
