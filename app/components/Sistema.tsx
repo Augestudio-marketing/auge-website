@@ -14,43 +14,43 @@ const PIEZAS = [
     nombre: "Web",
     x: 78.28,
     y: 21.72,
-    texto: "Tu mejor escaparate, siempre abierto y siempre a tu nombre.",
+    texto: "Tu mejor escaparate, abierto siempre.",
   },
   {
     nombre: "Agenda",
     x: 90,
     y: 50,
-    texto: "Tu disponibilidad real, visible para que reserven sin llamarte.",
+    texto: "Reservas que no dependen de un mensaje.",
   },
   {
     nombre: "WhatsApp",
     x: 78.28,
     y: 78.28,
-    texto: "Responde las dudas habituales y acompaña a tu clienta hasta la reserva.",
+    texto: "Información y seguimiento sin estar pendiente.",
   },
   {
     nombre: "Reseñas",
     x: 50,
     y: 90,
-    texto: "La petición llega después de la visita, sin que tengas que acordarte.",
+    texto: "Que una buena experiencia no se quede solo entre tú y tu clienta.",
   },
   {
     nombre: "Clientas",
     x: 21.72,
     y: 78.28,
-    texto: "Seguimos el ritmo de cada servicio para que las clientas tengan motivos para volver.",
+    texto: "Recuperar oportunidades que ya existen.",
   },
   {
     nombre: "Redes",
     x: 10,
     y: 50,
-    texto: "Presencia constante en tus redes, aunque tú estés ocupada en cabina.",
+    texto: "Presencia constante, aunque tú estés ocupada en cabina.",
   },
   {
     nombre: "Captación",
     x: 21.72,
     y: 21.72,
-    texto: "Campañas que traen clientas nuevas, medidas por lo que de verdad importa.",
+    texto: "Seguir haciendo crecer el negocio.",
   },
 ];
 
@@ -62,20 +62,15 @@ export default function Sistema() {
       : "Pasa el cursor, o toca, sobre cada pieza.";
 
   return (
-    <section className="bg-cream px-6 py-20 md:px-10 md:py-28">
+    <section id="sistema" className="bg-burgundy-deep px-6 py-20 text-marfil md:px-10 md:py-28">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
-          <h2 className="font-display text-3xl leading-tight text-stone sm:text-4xl md:text-5xl">
-            Todo conectado.
-            <br />
-            <span className="italic text-burgundy">Tú, sin estar pendiente.</span>
-          </h2>
+          <p className="text-xs uppercase tracking-widest text-marfil/60">A / 04 — The AUGE System</p>
         </Reveal>
         <Reveal delay={80}>
-          <p className="mx-auto mt-6 max-w-md leading-relaxed text-stone/70">
-            No necesitas siete proveedores. Necesitas que las piezas hablen
-            entre ellas.
-          </p>
+          <h2 className="mt-6 font-display text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
+            Todo conectado.
+          </h2>
         </Reveal>
       </div>
 
@@ -95,15 +90,15 @@ export default function Sistema() {
                   y1={50}
                   x2={p.x}
                   y2={p.y}
-                  stroke={active === i ? "#5C1A1B" : "#2B262233"}
+                  stroke={active === i ? "#F3ECE2" : "#F3ECE233"}
                   strokeWidth={active === i ? 0.4 : 0.25}
                   className="transition-all duration-300"
                 />
               ))}
             </svg>
 
-            <div className="absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-stone/30 bg-cream text-center">
-              <span className="font-display text-sm italic text-stone">
+            <div className="absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-marfil/30 bg-burgundy-deep text-center">
+              <span className="font-display text-sm font-semibold uppercase tracking-widest text-marfil">
                 Tu negocio
               </span>
             </div>
@@ -119,12 +114,12 @@ export default function Sistema() {
               >
                 <span
                   className={`h-2 w-2 rounded-full transition-colors duration-300 ${
-                    active === i ? "bg-burgundy" : "bg-stone/40"
+                    active === i ? "bg-marfil" : "bg-marfil/40"
                   }`}
                 />
                 <span
                   className={`whitespace-nowrap text-xs uppercase tracking-widest transition-colors duration-300 ${
-                    active === i ? "text-burgundy" : "text-stone/60"
+                    active === i ? "text-marfil" : "text-marfil/60"
                   }`}
                 >
                   {p.nombre}
@@ -134,7 +129,7 @@ export default function Sistema() {
           </div>
         </div>
 
-        <p className="mx-auto mt-10 hidden max-w-md text-center leading-relaxed text-stone/70 sm:block">
+        <p className="mx-auto mt-10 hidden max-w-md text-center leading-relaxed text-marfil/70 sm:block">
           {descripcion}
         </p>
       </Reveal>
@@ -146,20 +141,27 @@ export default function Sistema() {
             key={p.nombre}
             type="button"
             onClick={() => setActive(active === i ? null : i)}
-            className="block w-full border-b border-stone/15 py-4 text-left"
+            className="block w-full border-b border-marfil/15 py-4 text-left"
           >
-            <span className="flex items-center justify-between text-sm uppercase tracking-widest text-stone">
+            <span className="flex items-center justify-between text-sm uppercase tracking-widest text-marfil">
               {p.nombre}
-              <span className="text-burgundy">{active === i ? "–" : "+"}</span>
+              <span className="text-marfil/60">{active === i ? "–" : "+"}</span>
             </span>
             {active === i && (
-              <span className="mt-2 block text-sm leading-relaxed text-stone/70">
+              <span className="mt-2 block text-sm leading-relaxed text-marfil/70">
                 {p.texto}
               </span>
             )}
           </button>
         ))}
       </div>
+
+      <Reveal delay={220}>
+        <p className="mx-auto mt-16 max-w-md text-center leading-relaxed text-marfil/60">
+          No necesitas siete herramientas que funcionan por separado.
+          Necesitas que las piezas hablen entre ellas.
+        </p>
+      </Reveal>
     </section>
   );
 }

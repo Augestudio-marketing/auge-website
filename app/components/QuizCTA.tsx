@@ -225,19 +225,21 @@ export default function QuizCTA() {
     `?email=${encodeURIComponent(lead.email)}&phone=${encodeURIComponent(lead.whatsapp)}`;
 
   return (
-    <section id="diagnostico" className="bg-burgundy px-6 py-20 md:px-10 md:py-28">
+    <section id="diagnostico" className="bg-burgundy-deep px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-2xl text-center">
         {paso === "intro" && (
           <Reveal>
-            <h2 className="font-display text-3xl leading-tight text-cream sm:text-4xl md:text-5xl">
-              Antes de cambiar nada,
-              <br />
-              <span className="italic">mira dónde estás.</span>
+            <p className="text-xs uppercase tracking-widest text-cream/60">A / 10 — Diagnóstico AUGE</p>
+            <h2 className="mt-6 font-display text-3xl font-semibold leading-tight text-cream sm:text-4xl md:text-5xl">
+              ¿Cuánto depende tu negocio de ti?
             </h2>
             <p className="mx-auto mt-6 max-w-xl leading-relaxed text-cream/70">
-              Hemos creado un diagnóstico para descubrir qué está frenando
-              hoy a tu negocio. Doce preguntas. Unos minutos. Y una visión
-              clara de dónde estás perdiendo tiempo y oportunidades.
+              Responde unas preguntas sobre tu negocio y descubre dónde estás
+              perdiendo tiempo, oportunidades o clientas por tener demasiadas
+              cosas en tus manos.
+            </p>
+            <p className="mt-3 text-xs uppercase tracking-widest text-cream/45">
+              12 preguntas · 4 minutos · resultado inmediato
             </p>
 
             <div className="mx-auto mt-10 max-w-md overflow-hidden rounded-3xl bg-cream/10 text-left">
@@ -264,7 +266,7 @@ export default function QuizCTA() {
               onClick={() => setPaso(0)}
               className="mt-10 inline-block rounded-full border border-cream bg-cream px-10 py-4 text-sm uppercase tracking-widest text-burgundy transition-colors duration-300 hover:bg-transparent hover:text-cream"
             >
-              Hacer mi diagnóstico
+              Hacer el diagnóstico →
             </button>
             <p className="mt-4 text-xs uppercase tracking-widest text-cream/45">
               Gratis · Sin compromiso
@@ -314,7 +316,7 @@ export default function QuizCTA() {
         )}
 
         {paso === "lead" && (
-          <div className="grain mx-auto max-w-md rounded-3xl bg-cream px-8 py-10 text-left md:px-10">
+          <div className="mx-auto max-w-md rounded-3xl bg-cream px-8 py-10 text-left md:px-10">
             <p className="text-center font-display text-2xl italic text-stone">
               Ya casi está.
             </p>
@@ -407,7 +409,7 @@ export default function QuizCTA() {
         )}
 
         {paso === "resultado" && (
-          <div className="grain mx-auto max-w-lg rounded-3xl bg-cream px-8 py-10 text-left md:px-12">
+          <div className="mx-auto max-w-lg rounded-3xl bg-cream px-8 py-10 text-left md:px-12">
             <p className="text-center text-xs uppercase tracking-widest text-stone/45">
               Tu diagnóstico, {lead.nombre}
             </p>

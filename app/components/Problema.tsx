@@ -1,40 +1,52 @@
 import Reveal from "./Reveal";
 
+const PALABRAS = [
+  "Instagram.",
+  "WhatsApp.",
+  "Reservas.",
+  "Confirmaciones.",
+  "Reseñas.",
+  "Clientas que no vuelven.",
+  "Mensajes pendientes.",
+  "Web.",
+  "Contenido.",
+];
+
 export default function Problema() {
   return (
-    <section className="bg-marfil px-6 py-20 md:px-10 md:py-28">
+    <section id="problema" className="bg-burgundy px-6 py-20 text-marfil md:px-10 md:py-28">
       <div className="mx-auto max-w-2xl">
         <Reveal>
-          <p className="text-xs uppercase tracking-widest text-burgundy">
-            Si tienes un negocio de servicios, probablemente te suena
-          </p>
+          <p className="text-xs uppercase tracking-widest text-marfil/60">A / 02 — El problema</p>
         </Reveal>
 
         <Reveal delay={80}>
-          <h2 className="mt-6 font-display text-3xl leading-tight text-stone sm:text-4xl md:text-5xl">
-            Haces de todo.
-            <br />Y cada vez tienes menos tiempo.
+          <h2 className="mt-6 font-display text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
+            Haces bien tu trabajo.
+            <br />
+            Pero acabas haciéndolo todo.
           </h2>
         </Reveal>
 
-        <Reveal delay={160}>
-          <div className="mt-10 space-y-2 text-lg leading-relaxed text-stone/70">
-            <p>Atiendes a tus clientas.</p>
-            <p>Respondes WhatsApps entre cita y cita.</p>
-            <p>Confirmas reservas.</p>
-            <p>Intentas acordarte de pedir reseñas.</p>
-            <p>Publicas cuando encuentras un hueco.</p>
-            <p>
-              Y cuando alguien deja de venir, muchas veces ni siquiera
-              tienes tiempo de volver a escribirle.
-            </p>
-          </div>
+        <div className="mt-12 flex flex-wrap gap-x-3 gap-y-2 text-lg leading-relaxed text-marfil/80 sm:text-xl">
+          {PALABRAS.map((p, i) => (
+            <Reveal key={p} delay={180 + i * 80} className="inline-block">
+              {p}
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={200}>
+          <p className="mt-12 max-w-md leading-relaxed text-marfil/70">
+            Tu negocio ha crecido. Y con él, todo lo que depende de ti.
+          </p>
         </Reveal>
 
-        <Reveal delay={240}>
-          <p className="mt-14 font-display text-2xl italic leading-snug text-burgundy sm:text-3xl">
-            Tu negocio crece.
-            <br />Pero también crece todo lo que depende de ti.
+        <Reveal delay={280}>
+          <p className="mt-10 font-display text-2xl font-semibold leading-snug sm:text-3xl">
+            No te falta trabajo.
+            <br />
+            Te sobran cosas que dependen de ti.
           </p>
         </Reveal>
       </div>

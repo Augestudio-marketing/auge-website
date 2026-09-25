@@ -5,17 +5,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#F5F0E8",
-        marfil: "#F0EAE0",
-        hueso: "#EBE2D0",
-        burgundy: "#5C1A1B",
+        cream: "#F3ECE2",
+        marfil: "#F3ECE2",
+        hueso: "#DCD1C2",
+        arena: "#DCD1C2",
+        piedra: "#A5988A",
+        burgundy: "#5C1B21",
         "burgundy-deep": "#3D1014",
-        stone: "#2B2622",
+        chocolate: "#4A3122",
+        stone: "#4A3122",
       },
       fontFamily: {
         display: ["var(--font-display)"],
         sans: ["var(--font-inter)"],
-        signature: ["var(--font-signature)"],
       },
       letterSpacing: {
         widest2: "0.35em",

@@ -3,77 +3,70 @@ import Reveal from "./Reveal";
 const SERVICIOS = [
   {
     nombre: "Branding",
-    gancho: "Que tu negocio se vea como lo que es.",
     texto:
-      "Creamos una identidad propia, cuidada y reconocible. No para parecer más grande. Para reflejar de verdad el nivel que ya tienes.",
+      "Tu negocio tiene una forma de hacer las cosas. La convertimos en una marca que se reconoce.",
   },
   {
     nombre: "Web",
-    gancho: "Tu mejor escaparate, abierto siempre.",
     texto:
-      "Una web diseñada alrededor de tu negocio, tus servicios y la experiencia que quieres ofrecer. No una plantilla. Tu marca, llevada a digital.",
+      "Una web diseñada para explicar, transmitir y convertir sin parecer una más.",
   },
   {
     nombre: "Reservas",
-    gancho: "Menos mensajes. Más reservas que se hacen solas.",
     texto:
-      "Tu agenda disponible cuando tú estás trabajando, descansando o simplemente desconectando.",
+      "Que tus clientas puedan reservar cuando quieran. Sin mensajes de ida y vuelta.",
   },
   {
     nombre: "WhatsApp",
-    gancho: "Tu WhatsApp también puede descansar.",
     texto:
-      "Respuestas, dudas habituales, confirmaciones y recordatorios. Con el tono de tu marca. Sin que tengas que estar pendiente.",
+      "Respuestas, información y seguimiento sin que tengas que estar pendiente todo el día.",
+  },
+  {
+    nombre: "Automatizaciones",
+    texto: "Lo repetitivo puede hacerse solo.",
   },
   {
     nombre: "Reseñas",
-    gancho: "El trabajo que haces merece que se cuente.",
     texto:
-      "Después de una visita, pedimos a tus clientas que compartan su experiencia. En el momento adecuado. Sin que tengas que acordarte.",
+      "Después de una buena experiencia, pedir que la cuenten debería suceder solo.",
   },
   {
     nombre: "Clientas",
-    gancho: "Una clienta que ya confió en ti no debería perderse.",
     texto:
-      "Creamos seguimientos según el ritmo de cada servicio para volver a conectar con ella cuando tenga sentido.",
+      "Las clientas que ya confiaron en ti no deberían desaparecer sin más.",
   },
   {
-    nombre: "Social media + Captación",
-    gancho: "Que tu marca siga presente incluso cuando tú estás trabajando.",
+    nombre: "Captación",
     texto:
-      "Contenido y campañas pensados para construir marca, atraer nuevas clientas y acompañar el crecimiento.",
+      "Nuevas oportunidades para seguir haciendo crecer lo que ya has construido.",
   },
 ];
 
 export default function SietePiezas() {
   return (
-    <section className="bg-marfil px-6 py-20 md:px-10 md:py-28">
+    <section id="servicios" className="bg-marfil px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-3xl">
         <Reveal>
-          <h2 className="font-display text-3xl leading-tight text-stone sm:text-4xl md:text-5xl">
-            Tu negocio.
-            <br />
-            <span className="italic text-burgundy">
-              Bien hecho por dentro y por fuera.
-            </span>
+          <p className="text-xs uppercase tracking-widest text-burgundy">A / 05 — Qué hacemos</p>
+        </Reveal>
+        <Reveal delay={80}>
+          <h2 className="mt-6 font-display text-3xl font-semibold leading-tight text-stone sm:text-4xl md:text-5xl">
+            Todo lo que tu negocio necesita para funcionar mejor.
           </h2>
         </Reveal>
 
         <div className="mt-16">
           {SERVICIOS.map((s, i) => (
             <Reveal key={s.nombre} delay={i * 60}>
-              <div className="grid gap-2 border-t border-stone/15 py-10 sm:grid-cols-[auto,1fr] sm:gap-10">
-                <span className="font-display text-sm italic text-burgundy sm:pt-1">
+              <div className="grid gap-2 border-t border-stone/15 py-8 sm:grid-cols-[auto,1fr] sm:items-baseline sm:gap-10">
+                <span className="text-sm text-burgundy sm:pt-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <div>
-                  <h3 className="font-display text-2xl text-stone sm:text-3xl">
+                <div className="grid gap-1 sm:grid-cols-[220px,1fr] sm:items-baseline sm:gap-10">
+                  <h3 className="font-display text-lg font-semibold uppercase tracking-wide text-stone">
                     {s.nombre}
                   </h3>
-                  <p className="mt-2 text-lg italic text-burgundy">
-                    {s.gancho}
-                  </p>
-                  <p className="mt-3 max-w-xl leading-relaxed text-stone/65">
+                  <p className="max-w-xl leading-relaxed text-stone/65">
                     {s.texto}
                   </p>
                 </div>

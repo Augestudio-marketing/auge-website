@@ -1,57 +1,51 @@
 import Reveal from "./Reveal";
 
-const PUNTOS = [
-  "Diseñamos tu identidad.",
-  "Creamos tu web.",
-  "Organizamos tus reservas.",
-  "Hacemos que WhatsApp responda.",
-  "Automatizamos recordatorios y reseñas.",
-  "Ayudamos a recuperar clientas.",
-  "Y cuidamos tus redes.",
-];
-
 export default function Presentacion() {
   return (
-    <section className="bg-marfil px-6 py-20 md:px-10 md:py-28">
-      <div className="mx-auto max-w-2xl">
+    <section id="estudio" className="bg-marfil px-6 py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-5xl">
         <Reveal>
-          <p className="text-xs uppercase tracking-widest text-burgundy">
-            Conoce AUGE
-          </p>
+          <p className="text-xs uppercase tracking-widest text-burgundy">A / 03 — auge.studio</p>
         </Reveal>
 
-        <Reveal delay={80}>
-          <h2 className="mt-6 font-display text-3xl leading-tight text-stone sm:text-4xl md:text-5xl">
-            Todo lo que tu negocio necesita para crecer.
-            <br />
-            <span className="italic text-burgundy">
-              Sin que tú tengas que estar pendiente de todo.
-            </span>
-          </h2>
-        </Reveal>
+        <div className="mt-6 grid gap-12 md:grid-cols-[1fr,1fr] md:gap-16">
+          <Reveal delay={80}>
+            <h2 className="font-display text-3xl font-semibold leading-tight text-stone sm:text-4xl md:text-5xl">
+              Una marca. Un sistema.
+              <br />
+              Todo conectado.
+            </h2>
+          </Reveal>
 
-        <Reveal delay={160}>
-          <p className="mt-10 leading-relaxed text-stone/70">
-            En AUGE unimos marca, presencia digital y sistemas para
-            que tu negocio no dependa de ti para cada pequeño detalle.
-          </p>
-        </Reveal>
+          <div>
+            <Reveal delay={160}>
+              <p className="leading-relaxed text-stone/70">
+                AUGE nace para negocios que ya han construido algo valioso y
+                necesitan que todo lo que hay alrededor esté a la altura.
+                Diseñamos tu marca, construimos tu presencia digital y
+                conectamos los sistemas que hacen que tu negocio siga
+                funcionando cuando tú estás atendiendo a una clienta.
+              </p>
+            </Reveal>
 
-        <Reveal delay={220}>
-          <div className="mt-8 space-y-2 text-lg leading-relaxed text-stone/80">
-            {PUNTOS.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
+            <Reveal delay={240}>
+              <div className="relative mt-10 pl-8">
+                <svg
+                  className="absolute left-0 top-1 h-full w-4"
+                  viewBox="0 0 10 100"
+                  preserveAspectRatio="none"
+                  aria-hidden
+                >
+                  <line x1="1" y1="0" x2="1" y2="100" stroke="#5C1B21" strokeWidth="1" strokeOpacity="0.4" />
+                </svg>
+                <p className="font-display text-xl font-semibold leading-snug text-burgundy sm:text-2xl">
+                  Tú sigues haciendo lo que mejor sabes hacer. Nosotras
+                  hacemos que el resto funcione.
+                </p>
+              </div>
+            </Reveal>
           </div>
-        </Reveal>
-
-        <Reveal delay={300}>
-          <p className="mt-14 font-display text-2xl italic leading-snug text-stone sm:text-3xl">
-            Tú sigues haciendo lo que mejor sabes hacer.
-            <br />
-            Nosotras hacemos que el resto funcione.
-          </p>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
