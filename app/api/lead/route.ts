@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-
-const GHL_LOCATION_ID = "lGw2I4ZZ82tUMcT9ZvWl";
+import { createClient } from "@supabase/supabase-js";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -20,51 +19,31 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Faltan datos obligatorios" }, { status: 400 });
   }
 
-  const apiKey = process.env.contactsghl;
-  if (!apiKey) {
-    console.error("Falta la variable de entorno contactsghl");
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.error("Faltan las variables de entorno de Supabase");
     return NextResponse.json({ error: "Integración no configurada" }, { status: 500 });
   }
 
-  const [firstName, ...resto] = String(nombre).trim().split(" ");
-  const lastName = resto.join(" ");
+  const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-  try {
-    const respuesta = await fetch("https://services.leadconnectorhq.com/contacts/upsert", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-        Version: "v3",
-      },
-      body: JSON.stringify({
-        locationId: GHL_LOCATION_ID,
-        firstName,
-        lastName: lastName || undefined,
-        email,
-        phone: whatsapp,
-        city: ciudad || undefined,
-        source: "Diagnostico Web",
-        tags: ["diagnostico-completado"],
-        customFields: [
-          { key: "nombre_del_negocio", fieldValue: negocio ?? "" },
-          { key: "tipo_de_negocio", fieldValue: tipoNegocio ?? "" },
-          { key: "nota_diagnostico", fieldValue: nota ?? "" },
-          { key: "fuga_principal", fieldValue: fugaPrincipal ?? "" },
-          { key: "fuga_secundaria", fieldValue: fugaSecundaria ?? "" },
-        ],
-      }),
-    });
+  const { error } = await supabase.from("diagnosticos").insert({
+    nombre,
+    negocio: negocio ?? null,
+    ciudad: ciudad ?? null,
+    email,
+    whatsapp,
+    tipo_negocio: tipoNegocio ?? null,
+    nota: nota ?? null,
+    fuga_principal: fugaPrincipal ?? null,
+    fuga_secundaria: fugaSecundaria ?? null,
+  });
 
-    if (!respuesta.ok) {
-      const detalle = await respuesta.text();
-      console.error("Error de GHL al crear el contacto:", respuesta.status, detalle);
-      return NextResponse.json({ error: "No se pudo crear el contacto" }, { status: 502 });
-    }
-
-    return NextResponse.json({ ok: true });
-  } catch (error) {
-    console.error("Error de red al llamar a GHL:", error);
-    return NextResponse.json({ error: "Error de red" }, { status: 500 });
+  if (error) {
+    console.error("Error guardando el diagnóstico en Supabase:", error);
+    return NextResponse.json({ error: "No se pudo guardar el diagnóstico" }, { status: 502 });
   }
+
+  return NextResponse.json({ ok: true });
 }
