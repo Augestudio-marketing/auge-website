@@ -17,15 +17,18 @@ export async function GET(request: Request) {
 
   const supabase = createClient(supabaseUrl, serviceRoleKey);
 
-  const hace48h = new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString();
+  // El cron solo puede correr una vez al día en el plan Hobby de Vercel,
+  // así que la ventana es "al menos 24h" en vez de "entre 24 y 48h" para
+  // no dejar a nadie sin el segundo email por el margen de un día.
   const hace24h = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+  const hace7dias = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
   const { data: candidatos, error } = await supabase
     .from("diagnosticos")
     .select("id, email")
     .eq("email2_enviado", false)
-    .gte("created_at", hace48h)
-    .lte("created_at", hace24h);
+    .lte("created_at", hace24h)
+    .gte("created_at", hace7dias);
 
   if (error) {
     console.error("Error buscando diagnósticos para el email de seguimiento:", error);
