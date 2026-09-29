@@ -3,198 +3,208 @@
 import { useState, type FormEvent } from "react";
 import Reveal from "./Reveal";
 
-const TIPOS_NEGOCIO = [
-  "Clínica de medicina estética",
-  "Centro de estética",
-  "Peluquería",
-  "Salón de uñas",
-  "Pestañas y cejas",
-  "Micropigmentación",
-  "Spa o bienestar",
-  "Barbería",
-  "Otro",
-];
+type Opcion = { texto: string; puntos: number };
 
-const QUESTIONS: {
+type Pregunta = {
   id: string;
   pregunta: string;
-  opciones: string[];
-  dimension?: string;
-}[] = [
-  { id: "negocio", pregunta: "¿Qué tipo de negocio tienes?", opciones: TIPOS_NEGOCIO },
+  tipo: "opciones" | "escala" | "abierta";
+  opciones?: Opcion[];
+};
+
+const PREGUNTAS: Pregunta[] = [
   {
-    id: "equipo",
-    pregunta: "¿Cuántas personas trabajáis en el negocio?",
-    opciones: ["Solo yo", "2 a 4", "5 a 9", "10 o más"],
+    id: "reserva",
+    pregunta: "Cuando una clienta quiere reservar, ¿qué suele hacer?",
+    tipo: "opciones",
+    opciones: [
+      { texto: "Reserva directamente online.", puntos: 0 },
+      { texto: "Me escribe por WhatsApp.", puntos: 2 },
+      { texto: "Me llama.", puntos: 2 },
+      { texto: "Depende del servicio.", puntos: 1 },
+    ],
   },
   {
-    id: "citas",
-    pregunta: "¿Cuántas citas tenéis a la semana, aproximadamente?",
-    opciones: ["Menos de 20", "Entre 20 y 50", "Entre 50 y 100", "Más de 100"],
+    id: "confirmacion",
+    pregunta: "¿Quién confirma las citas?",
+    tipo: "opciones",
+    opciones: [
+      { texto: "Se confirma automáticamente.", puntos: 0 },
+      { texto: "Lo hago yo o mi equipo, manualmente.", puntos: 3 },
+      { texto: "Algunas sí y otras no.", puntos: 1.5 },
+    ],
   },
   {
-    id: "reservas",
-    pregunta: "¿Cómo os reservan hoy vuestras clientas?",
-    opciones: ["WhatsApp o llamada", "Booksy o Treatwell", "App propia", "Libreta o papel"],
-    dimension: "reservas",
-  },
-  {
-    id: "whatsapp",
-    pregunta: "¿Cuánto tardáis en contestar un WhatsApp fuera de horario?",
-    opciones: ["Al momento", "Esa noche", "Al día siguiente", "A veces no contestamos"],
-    dimension: "whatsapp",
+    id: "reactivacion",
+    pregunta: "Si una clienta no viene desde hace 6 meses...",
+    tipo: "opciones",
+    opciones: [
+      { texto: "Tenemos un sistema que la vuelve a contactar.", puntos: 0 },
+      { texto: "Lo hacemos cuando nos acordamos.", puntos: 2 },
+      { texto: "No hacemos seguimiento.", puntos: 3 },
+    ],
   },
   {
     id: "resenas",
-    pregunta: "¿Pedís reseñas después de cada visita?",
-    opciones: ["Siempre", "A veces", "Nunca"],
-    dimension: "resenas",
-  },
-  {
-    id: "churn",
-    pregunta: "¿Hacéis algo cuando una clienta habitual deja de venir?",
-    opciones: ["Sí, la contactamos", "Nos damos cuenta tarde", "No"],
-    dimension: "churn",
-  },
-  {
-    id: "imagen",
-    pregunta: "¿Cómo describirías vuestra web e Instagram hoy?",
-    opciones: ["Nos representan", "Mejorables", "Los tenemos abandonados", "No tenemos web"],
-    dimension: "imagen",
-  },
-  {
-    id: "publicidad",
-    pregunta: "¿Hacéis publicidad en Google o Meta?",
+    pregunta: "Después de una cita, ¿cómo pides una reseña?",
+    tipo: "opciones",
     opciones: [
-      "Sí, gestionada y con seguimiento",
-      "Sí, pero sin seguimiento de resultados",
-      "No hacemos publicidad",
+      { texto: "Automáticamente.", puntos: 0 },
+      { texto: "Se lo pedimos nosotras.", puntos: 1.5 },
+      { texto: "Cuando nos acordamos.", puntos: 2.5 },
+      { texto: "No la pedimos.", puntos: 3 },
     ],
-    dimension: "publicidad",
   },
   {
-    id: "contenido",
-    pregunta: "¿Con qué frecuencia publicáis contenido en redes?",
-    opciones: ["Semanal y planificado", "Esporádico", "Casi nunca", "Nunca"],
-    dimension: "contenido",
-  },
-  {
-    id: "medicion",
-    pregunta: "¿Revisáis vuestros números (facturación, citas perdidas, etc.)?",
+    id: "repetitivas",
+    pregunta: "¿Cuánto tiempo pasas respondiendo preguntas que se repiten?",
+    tipo: "opciones",
     opciones: [
-      "Cada mes, con datos claros",
-      "De vez en cuando",
-      "No los miramos",
-      "No sabría decir nuestras cifras",
+      { texto: "Casi nada.", puntos: 0 },
+      { texto: "Un rato cada día.", puntos: 1.5 },
+      { texto: "Demasiado.", puntos: 3 },
     ],
-    dimension: "medicion",
   },
   {
-    id: "preparacion",
-    pregunta: "¿Qué tan preparado sientes que está tu negocio para crecer ahora mismo?",
-    opciones: ["Muy preparado", "Con dudas", "No lo sé"],
+    id: "web_reserva",
+    pregunta: "¿Tu web permite reservar sin hablar contigo?",
+    tipo: "opciones",
+    opciones: [
+      { texto: "Sí.", puntos: 0 },
+      { texto: "Parcialmente.", puntos: 1.5 },
+      { texto: "No.", puntos: 3 },
+    ],
+  },
+  {
+    id: "disponibilidad",
+    pregunta: "¿Qué ocurre cuando tú no estás disponible?",
+    tipo: "opciones",
+    opciones: [
+      { texto: "El negocio sigue funcionando prácticamente igual.", puntos: 0 },
+      { texto: "Algunas cosas se paran.", puntos: 1.5 },
+      { texto: "Se para bastante.", puntos: 3 },
+    ],
+  },
+  {
+    id: "herramientas",
+    pregunta: "¿Tus herramientas están conectadas entre sí?",
+    tipo: "opciones",
+    opciones: [
+      { texto: "Sí.", puntos: 0 },
+      { texto: "Algunas.", puntos: 1.5 },
+      { texto: "Cada cosa va por su lado.", puntos: 3 },
+      { texto: "No sé.", puntos: 2 },
+    ],
+  },
+  {
+    id: "churn_conocido",
+    pregunta: "¿Sabes cuántas clientas dejaron de venir durante los últimos 6 meses?",
+    tipo: "opciones",
+    opciones: [
+      { texto: "Sí.", puntos: 0 },
+      { texto: "Aproximadamente.", puntos: 1 },
+      { texto: "No.", puntos: 2 },
+    ],
+  },
+  {
+    id: "escala_dependencia",
+    pregunta: "¿Cuánto depende de ti el día a día? (1 = nada, 10 = todo)",
+    tipo: "escala",
+  },
+  {
+    id: "picos_demanda",
+    pregunta: "Si mañana entraran 20 clientas nuevas...",
+    tipo: "opciones",
+    opciones: [
+      { texto: "Estamos preparadas.", puntos: 0 },
+      { texto: "Tendríamos que organizarnos.", puntos: 1.5 },
+      { texto: "Sería bastante caótico.", puntos: 3 },
+    ],
+  },
+  {
+    id: "dejar_de_hacer",
+    pregunta: "¿Qué es lo que más te gustaría dejar de hacer personalmente?",
+    tipo: "abierta",
   },
 ];
 
-const FUGAS: Record<
-  string,
-  { titulo: string; frase: string; severidad: (o: string) => number; max: number }
-> = {
-  reservas: {
-    titulo: "Pierdes clientas por cómo reservan hoy.",
-    frase:
-      "Sin reservas online claras, dependes del teléfono, del papel o de comisiones por cita.",
-    severidad: (o) => ({ "Libreta o papel": 3, "Booksy o Treatwell": 2, "WhatsApp o llamada": 1, "App propia": 0 })[o] ?? 0,
-    max: 3,
+const PUNTOS_MAXIMOS = PREGUNTAS.reduce((sum, p) => {
+  if (p.tipo === "escala") return sum + 3;
+  if (p.tipo === "abierta") return sum;
+  return sum + Math.max(...(p.opciones ?? []).map((o) => o.puntos));
+}, 0);
+
+const NIVELES = [
+  {
+    id: 1,
+    titulo: "Todo pasa por ti.",
+    texto:
+      "Tu negocio funciona, pero demasiadas cosas dependen todavía de que estés pendiente. Reservas, mensajes, seguimiento, reseñas... Hay oportunidades para automatizar y conectar procesos.",
   },
-  whatsapp: {
-    titulo: "Pierdes clientas en la respuesta del WhatsApp.",
-    frase: "Cada hora sin contestar es una clienta que puede reservar en otro sitio.",
-    severidad: (o) => ({ "A veces no contestamos": 3, "Al día siguiente": 2, "Esa noche": 1, "Al momento": 0 })[o] ?? 0,
-    max: 3,
+  {
+    id: 2,
+    titulo: "Funciona. Pero podría funcionar solo.",
+    texto:
+      "Ya tienes herramientas y procesos, pero todavía hay demasiadas piezas desconectadas. El siguiente paso no es añadir más cosas. Es hacer que las que ya tienes trabajen juntas.",
   },
-  resenas: {
-    titulo: "Pierdes reputación por las reseñas que no llegan.",
-    frase: "Las clientas contentas no dejan rastro si nadie les pide la reseña.",
-    severidad: (o) => ({ Nunca: 2, "A veces": 1, Siempre: 0 })[o] ?? 0,
-    max: 2,
+  {
+    id: 3,
+    titulo: "Tu negocio ya tiene sistema.",
+    texto:
+      "Tienes una base sólida y una buena estructura. Ahora toca optimizar, conectar y hacer que esa estructura acompañe el crecimiento.",
   },
-  churn: {
-    titulo: "Pierdes clientas habituales sin darte cuenta.",
-    frase: "Cuando alguien deja de venir y nadie lo nota, esa clienta no vuelve.",
-    severidad: (o) => ({ No: 2, "Nos damos cuenta tarde": 1, "Sí, la contactamos": 0 })[o] ?? 0,
-    max: 2,
-  },
-  imagen: {
-    titulo: "Pierdes clientas antes de que te conozcan.",
-    frase: "Tu web e Instagram son lo primero que ve quien te busca en Google.",
-    severidad: (o) => ({ "No tenemos web": 3, "Los tenemos abandonados": 2, Mejorables: 1, "Nos representan": 0 })[o] ?? 0,
-    max: 3,
-  },
-  publicidad: {
-    titulo: "Tu publicidad no está dando lo que podría.",
-    frase: "Invertir sin medir resultados es la forma más cara de hacer publicidad.",
-    severidad: (o) => ({ "Sí, pero sin seguimiento de resultados": 3, "No hacemos publicidad": 1, "Sí, gestionada y con seguimiento": 0 })[o] ?? 0,
-    max: 3,
-  },
-  contenido: {
-    titulo: "Tus redes no reflejan el nivel real de tu trabajo.",
-    frase: "Un feed abandonado transmite lo contrario de lo que haces cada día en cabina.",
-    severidad: (o) => ({ Nunca: 3, "Casi nunca": 2, Esporádico: 1, "Semanal y planificado": 0 })[o] ?? 0,
-    max: 3,
-  },
-  medicion: {
-    titulo: "No tienes visibilidad real de tus números.",
-    frase: "Sin datos claros, es imposible saber dónde se está yendo el dinero.",
-    severidad: (o) =>
-      ({ "No sabría decir nuestras cifras": 3, "No los miramos": 2, "De vez en cuando": 1, "Cada mes, con datos claros": 0 })[o] ?? 0,
-    max: 3,
-  },
-};
+];
 
 type Paso = "intro" | number | "lead" | "resultado";
 
 export default function QuizCTA() {
   const [paso, setPaso] = useState<Paso>("intro");
   const [respuestas, setRespuestas] = useState<Record<string, string>>({});
+  const [abiertaActual, setAbiertaActual] = useState("");
   const [lead, setLead] = useState({
     nombre: "",
-    negocio: "",
-    ciudad: "",
     email: "",
+    instagramWeb: "",
     whatsapp: "",
     consentimiento: false,
   });
 
-  function responder(id: string, opcion: string) {
-    setRespuestas({ ...respuestas, [id]: opcion });
-    const actual = typeof paso === "number" ? paso : 0;
-    if (actual + 1 < QUESTIONS.length) {
+  function avanzar(actual: number) {
+    if (actual + 1 < PREGUNTAS.length) {
       setPaso(actual + 1);
     } else {
       setPaso("lead");
     }
   }
 
-  const evaluadas = Object.entries(FUGAS).map(([id, f]) => {
-    const opcion = respuestas[id];
-    return {
-      id,
-      titulo: f.titulo,
-      frase: f.frase,
-      severidad: opcion ? f.severidad(opcion) : 0,
-      max: f.max,
-    };
-  });
+  function responderOpciones(id: string, texto: string) {
+    setRespuestas({ ...respuestas, [id]: texto });
+    avanzar(typeof paso === "number" ? paso : 0);
+  }
 
-  const totalSeveridad = evaluadas.reduce((sum, e) => sum + e.severidad, 0);
-  const totalMax = evaluadas.reduce((sum, e) => sum + e.max, 0);
-  const nota = totalMax > 0 ? Math.round(100 - (totalSeveridad / totalMax) * 100) : 100;
+  function responderEscala(id: string, valor: number) {
+    setRespuestas({ ...respuestas, [id]: String(valor) });
+    avanzar(typeof paso === "number" ? paso : 0);
+  }
 
-  const topFugas = [...evaluadas]
-    .filter((e) => e.severidad > 0)
-    .sort((a, b) => b.severidad / b.max - a.severidad / a.max)
-    .slice(0, 2);
+  function responderAbierta(id: string) {
+    setRespuestas({ ...respuestas, [id]: abiertaActual });
+    avanzar(typeof paso === "number" ? paso : 0);
+  }
+
+  const puntosTotales = PREGUNTAS.reduce((sum, p) => {
+    const respuesta = respuestas[p.id];
+    if (!respuesta) return sum;
+    if (p.tipo === "escala") return sum + (Number(respuesta) / 10) * 3;
+    if (p.tipo === "abierta") return sum;
+    const opcion = p.opciones?.find((o) => o.texto === respuesta);
+    return sum + (opcion?.puntos ?? 0);
+  }, 0);
+
+  const nota =
+    PUNTOS_MAXIMOS > 0 ? Math.round(100 - (puntosTotales / PUNTOS_MAXIMOS) * 100) : 100;
+
+  const nivel = nota >= 70 ? NIVELES[2] : nota >= 40 ? NIVELES[1] : NIVELES[0];
 
   function handleLeadSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -205,30 +215,30 @@ export default function QuizCTA() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         nombre: lead.nombre,
-        negocio: lead.negocio,
-        ciudad: lead.ciudad,
         email: lead.email,
+        instagramWeb: lead.instagramWeb,
         whatsapp: lead.whatsapp,
-        tipoNegocio: respuestas.negocio,
         nota,
-        fugaPrincipal: topFugas[0]?.titulo ?? "",
-        fugaSecundaria: topFugas[1]?.titulo ?? "",
+        nivel: nivel.titulo,
+        fugaPrincipal: nivel.titulo,
+        fugaSecundaria: respuestas.dejar_de_hacer ?? "",
+        respuestas,
       }),
     }).catch((error) => console.error("Error guardando el diagnóstico", error));
   }
 
-  const resumenWhatsapp = `Hola, soy ${lead.nombre || ""} de ${lead.negocio || "mi negocio"} (${lead.ciudad || ""}). Acabo de hacer el diagnóstico de AUGE (nota: ${nota}/100) y me gustaría reservar mi sesión.`;
+  const resumenWhatsapp = `Hola, soy ${lead.nombre || ""}. Acabo de hacer el diagnóstico de AUGE (nivel: ${nivel.titulo}) y me gustaría reservar mi sesión.`;
   const whatsappHref = "https://wa.me/34613803022?text=" + encodeURIComponent(resumenWhatsapp);
 
   const bookingHref =
     "https://app.augestudio.es/reservar?" +
     new URLSearchParams({
       nombre: lead.nombre,
-      negocio: lead.negocio,
-      ciudad: lead.ciudad,
       email: lead.email,
       whatsapp: lead.whatsapp,
     }).toString();
+
+  const preguntaActual = typeof paso === "number" ? PREGUNTAS[paso] : null;
 
   return (
     <section id="diagnostico" className="bg-burgundy px-6 py-20 md:px-10 md:py-28">
@@ -236,76 +246,103 @@ export default function QuizCTA() {
         {paso === "intro" && (
           <Reveal>
             <h2 className="font-display text-3xl leading-tight text-cream sm:text-4xl md:text-5xl">
-              Antes de cambiar nada,
+              ¿Cuánto depende
               <br />
-              <span className="italic">mira dónde estás.</span>
+              <span className="italic">tu negocio de ti?</span>
             </h2>
-            <p className="mx-auto mt-6 max-w-xl leading-relaxed text-cream/70">
-              Hemos creado un diagnóstico para descubrir qué está frenando
-              hoy a tu negocio. Doce preguntas. Unos minutos. Y una visión
-              clara de dónde estás perdiendo tiempo y oportunidades.
+            <p className="mx-auto mt-4 text-sm uppercase tracking-widest text-cream/50">
+              Descúbrelo en 4 minutos.
             </p>
-
-            <div className="mx-auto mt-10 max-w-md overflow-hidden rounded-3xl bg-cream/10 text-left">
-              {[
-                ["01", "Tu punto de partida", "Dónde estás hoy."],
-                ["02", "Tus principales fugas", "Qué está haciendo que pierdas oportunidades."],
-                ["03", "Tu próximo paso", "Qué tendría sentido mejorar durante los próximos 90 días."],
-              ].map(([num, titulo, texto]) => (
-                <div
-                  key={titulo}
-                  className="flex gap-4 border-b border-cream/10 px-6 py-5 text-sm last:border-0"
-                >
-                  <span className="font-display italic text-cream/50">{num}</span>
-                  <div>
-                    <p className="text-cream">{titulo}</p>
-                    <p className="mt-1 text-cream/55">{texto}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p className="mx-auto mt-6 max-w-xl leading-relaxed text-cream/70">
+              Tu negocio puede estar funcionando perfectamente y, aun así,
+              depender demasiado de ti. Responde 12 preguntas y descubre qué
+              partes de tu negocio siguen pasando por tus manos.
+            </p>
+            <p className="mt-4 text-xs uppercase tracking-widest text-cream/45">
+              12 preguntas · 4 minutos · resultado inmediato
+            </p>
 
             <button
               type="button"
               onClick={() => setPaso(0)}
               className="mt-10 inline-block rounded-full border border-cream bg-cream px-10 py-4 text-sm uppercase tracking-widest text-burgundy transition-colors duration-300 hover:bg-transparent hover:text-cream"
             >
-              Hacer mi diagnóstico
+              Empezar diagnóstico →
             </button>
-            <p className="mt-4 text-xs uppercase tracking-widest text-cream/45">
-              Gratis · Sin compromiso
-            </p>
           </Reveal>
         )}
 
-        {typeof paso === "number" && (
+        {preguntaActual && typeof paso === "number" && (
           <div className="text-left">
             <p className="text-center text-xs uppercase tracking-widest text-cream/50">
-              Pregunta {paso + 1} de {QUESTIONS.length}
+              Pregunta {paso + 1} de {PREGUNTAS.length}
             </p>
             <div className="mx-auto mt-4 h-1 max-w-xs overflow-hidden rounded-full bg-cream/15">
               <div
                 className="h-full rounded-full bg-cream transition-all"
-                style={{ width: `${((paso + 1) / QUESTIONS.length) * 100}%` }}
+                style={{ width: `${((paso + 1) / PREGUNTAS.length) * 100}%` }}
               />
             </div>
 
             <h3 className="mt-10 text-center font-display text-2xl italic text-cream sm:text-3xl">
-              {QUESTIONS[paso].pregunta}
+              {preguntaActual.pregunta}
             </h3>
 
-            <div className="mt-8 space-y-3">
-              {QUESTIONS[paso].opciones.map((opcion) => (
+            {preguntaActual.tipo === "opciones" && (
+              <div className="mt-8 space-y-3">
+                {preguntaActual.opciones?.map((opcion) => (
+                  <button
+                    key={opcion.texto}
+                    type="button"
+                    onClick={() => responderOpciones(preguntaActual.id, opcion.texto)}
+                    className="block w-full rounded-2xl border border-cream/20 px-6 py-4 text-left text-cream transition-colors hover:border-cream hover:bg-cream/10"
+                  >
+                    {opcion.texto}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {preguntaActual.tipo === "escala" && (
+              <div className="mt-8">
+                <div className="flex flex-wrap justify-center gap-2">
+                  {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
+                    <button
+                      key={n}
+                      type="button"
+                      onClick={() => responderEscala(preguntaActual.id, n)}
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-cream hover:bg-cream/10"
+                    >
+                      {n}
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-2 flex justify-between text-xs uppercase tracking-widest text-cream/40">
+                  <span>Nada</span>
+                  <span>Todo</span>
+                </div>
+              </div>
+            )}
+
+            {preguntaActual.tipo === "abierta" && (
+              <div className="mt-8">
+                <textarea
+                  value={abiertaActual}
+                  onChange={(e) => setAbiertaActual(e.target.value)}
+                  rows={3}
+                  placeholder="Escribe tu respuesta..."
+                  className="w-full rounded-2xl border border-cream/20 bg-transparent px-6 py-4 text-cream outline-none placeholder:text-cream/40 focus:border-cream"
+                />
                 <button
-                  key={opcion}
                   type="button"
-                  onClick={() => responder(QUESTIONS[paso].id, opcion)}
-                  className="block w-full rounded-2xl border border-cream/20 px-6 py-4 text-left text-cream transition-colors hover:border-cream hover:bg-cream/10"
+                  disabled={!abiertaActual.trim()}
+                  onClick={() => responderAbierta(preguntaActual.id)}
+                  className="mt-4 w-full rounded-full border border-cream bg-cream py-3 text-sm uppercase tracking-widest text-burgundy transition-colors duration-300 hover:bg-transparent hover:text-cream disabled:opacity-40"
                 >
-                  {opcion}
+                  Continuar →
                 </button>
-              ))}
-            </div>
+              </div>
+            )}
 
             {paso > 0 && (
               <button
@@ -322,10 +359,11 @@ export default function QuizCTA() {
         {paso === "lead" && (
           <div className="grain mx-auto max-w-md rounded-3xl bg-cream px-8 py-10 text-left md:px-10">
             <p className="text-center font-display text-2xl italic text-stone">
-              Ya casi está.
+              Hemos analizado tus respuestas.
             </p>
-            <p className="mt-2 text-center text-sm text-stone/60">
-              Déjanos tus datos para enviarte tu diagnóstico.
+            <p className="mt-3 text-center text-sm leading-relaxed text-stone/60">
+              Hay varias áreas de tu negocio que podrías dejar de gestionar
+              personalmente. ¿Quieres ver tu diagnóstico completo?
             </p>
 
             <form onSubmit={handleLeadSubmit} className="mt-8 space-y-5">
@@ -343,30 +381,6 @@ export default function QuizCTA() {
               </div>
               <div>
                 <label className="text-xs uppercase tracking-widest text-stone/50">
-                  Nombre del negocio
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={lead.negocio}
-                  onChange={(e) => setLead({ ...lead, negocio: e.target.value })}
-                  className="mt-2 w-full border-0 border-b border-stone/25 bg-transparent py-2 text-stone outline-none focus:border-burgundy"
-                />
-              </div>
-              <div>
-                <label className="text-xs uppercase tracking-widest text-stone/50">
-                  Ciudad
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={lead.ciudad}
-                  onChange={(e) => setLead({ ...lead, ciudad: e.target.value })}
-                  className="mt-2 w-full border-0 border-b border-stone/25 bg-transparent py-2 text-stone outline-none focus:border-burgundy"
-                />
-              </div>
-              <div>
-                <label className="text-xs uppercase tracking-widest text-stone/50">
                   Email
                 </label>
                 <input
@@ -379,11 +393,21 @@ export default function QuizCTA() {
               </div>
               <div>
                 <label className="text-xs uppercase tracking-widest text-stone/50">
-                  WhatsApp
+                  Instagram o web
+                </label>
+                <input
+                  type="text"
+                  value={lead.instagramWeb}
+                  onChange={(e) => setLead({ ...lead, instagramWeb: e.target.value })}
+                  className="mt-2 w-full border-0 border-b border-stone/25 bg-transparent py-2 text-stone outline-none focus:border-burgundy"
+                />
+              </div>
+              <div>
+                <label className="text-xs uppercase tracking-widest text-stone/50">
+                  Teléfono (opcional)
                 </label>
                 <input
                   type="tel"
-                  required
                   value={lead.whatsapp}
                   onChange={(e) => setLead({ ...lead, whatsapp: e.target.value })}
                   className="mt-2 w-full border-0 border-b border-stone/25 bg-transparent py-2 text-stone outline-none focus:border-burgundy"
@@ -406,7 +430,7 @@ export default function QuizCTA() {
                 type="submit"
                 className="w-full rounded-full border border-stone bg-stone py-3 text-sm uppercase tracking-widest text-cream transition-colors duration-300 hover:bg-transparent hover:text-stone"
               >
-                Ver mi diagnóstico
+                Ver mi resultado →
               </button>
             </form>
           </div>
@@ -417,39 +441,36 @@ export default function QuizCTA() {
             <p className="text-center text-xs uppercase tracking-widest text-stone/45">
               Tu diagnóstico, {lead.nombre}
             </p>
-            <p className="mt-4 text-center font-display text-6xl italic text-burgundy">
-              {nota}
-              <span className="text-2xl not-italic text-stone/40">/100</span>
+            <p className="mt-4 text-center text-xs uppercase tracking-widest text-burgundy">
+              Nivel {nivel.id}
+            </p>
+            <p className="mt-2 text-center font-display text-3xl italic text-burgundy sm:text-4xl">
+              {nivel.titulo}
             </p>
 
-            <div className="mt-8 space-y-5">
-              {topFugas.length > 0 ? (
-                topFugas.map((f) => (
-                  <div key={f.id}>
-                    <p className="font-display text-lg italic text-stone">
-                      {f.titulo}
-                    </p>
-                    <p className="mt-1 text-sm leading-relaxed text-stone/70">
-                      {f.frase}
-                    </p>
-                  </div>
-                ))
-              ) : (
-                <p className="text-sm leading-relaxed text-stone/70">
-                  Tu negocio ya tiene buenos cimientos. Hablemos de cómo
-                  llevarlo más lejos.
-                </p>
-              )}
+            <p className="mt-6 text-sm leading-relaxed text-stone/70">{nivel.texto}</p>
+
+            <div className="mt-10 border-t border-stone/15 pt-8 text-center">
+              <p className="font-display text-xl italic text-stone">
+                ¿Quieres que lo veamos juntas?
+              </p>
+              <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-stone/60">
+                Si quieres, podemos revisar tu resultado contigo y enseñarte
+                qué cambiaríamos primero en tu negocio.
+              </p>
             </div>
 
             <a
               href={bookingHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 block w-full rounded-full border border-burgundy bg-burgundy py-3 text-center text-sm uppercase tracking-widest text-cream transition-colors duration-300 hover:bg-transparent hover:text-burgundy"
+              className="mt-6 block w-full rounded-full border border-burgundy bg-burgundy py-3 text-center text-sm uppercase tracking-widest text-cream transition-colors duration-300 hover:bg-transparent hover:text-burgundy"
             >
-              Reservar mi sesión de 30 minutos
+              Reservar diagnóstico AUGE →
             </a>
+            <p className="mt-2 text-center text-xs uppercase tracking-widest text-stone/40">
+              30 minutos · Gratis · Sin compromiso
+            </p>
             <a
               href={whatsappHref}
               target="_blank"

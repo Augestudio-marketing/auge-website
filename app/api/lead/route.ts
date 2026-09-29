@@ -1,21 +1,13 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { enviarEmailDiagnostico } from "@/lib/email";
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const {
-    nombre,
-    negocio,
-    ciudad,
-    email,
-    whatsapp,
-    tipoNegocio,
-    nota,
-    fugaPrincipal,
-    fugaSecundaria,
-  } = body;
+  const { nombre, email, instagramWeb, whatsapp, nota, nivel, fugaPrincipal, fugaSecundaria, respuestas } =
+    body;
 
-  if (!nombre || !email || !whatsapp) {
+  if (!nombre || !email) {
     return NextResponse.json({ error: "Faltan datos obligatorios" }, { status: 400 });
   }
 
@@ -30,20 +22,22 @@ export async function POST(request: Request) {
 
   const { error } = await supabase.from("diagnosticos").insert({
     nombre,
-    negocio: negocio ?? null,
-    ciudad: ciudad ?? null,
     email,
-    whatsapp,
-    tipo_negocio: tipoNegocio ?? null,
+    instagram_web: instagramWeb || null,
+    whatsapp: whatsapp || "",
+    nivel: nivel ?? null,
     nota: nota ?? null,
     fuga_principal: fugaPrincipal ?? null,
     fuga_secundaria: fugaSecundaria ?? null,
+    respuestas: respuestas ?? null,
   });
 
   if (error) {
     console.error("Error guardando el diagnóstico en Supabase:", error);
     return NextResponse.json({ error: "No se pudo guardar el diagnóstico" }, { status: 502 });
   }
+
+  await enviarEmailDiagnostico(email, nombre);
 
   return NextResponse.json({ ok: true });
 }
