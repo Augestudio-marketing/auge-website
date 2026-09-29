@@ -214,15 +214,21 @@ export default function QuizCTA() {
         fugaPrincipal: topFugas[0]?.titulo ?? "",
         fugaSecundaria: topFugas[1]?.titulo ?? "",
       }),
-    }).catch((error) => console.error("Error enviando el lead a GHL", error));
+    }).catch((error) => console.error("Error guardando el diagnóstico", error));
   }
 
   const resumenWhatsapp = `Hola, soy ${lead.nombre || ""} de ${lead.negocio || "mi negocio"} (${lead.ciudad || ""}). Acabo de hacer el diagnóstico de AUGE (nota: ${nota}/100) y me gustaría reservar mi sesión.`;
   const whatsappHref = "https://wa.me/34613803022?text=" + encodeURIComponent(resumenWhatsapp);
 
   const bookingHref =
-    "https://reservas.augestudio.es/widget/booking/rgSqYKMKHnl3xaUXD4WM" +
-    `?email=${encodeURIComponent(lead.email)}&phone=${encodeURIComponent(lead.whatsapp)}`;
+    "https://auge-app-liart.vercel.app/reservar?" +
+    new URLSearchParams({
+      nombre: lead.nombre,
+      negocio: lead.negocio,
+      ciudad: lead.ciudad,
+      email: lead.email,
+      whatsapp: lead.whatsapp,
+    }).toString();
 
   return (
     <section id="diagnostico" className="bg-burgundy-deep px-6 py-20 md:px-10 md:py-28">
