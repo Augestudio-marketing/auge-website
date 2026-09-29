@@ -8,7 +8,6 @@ const PLANES = [
       "Branding",
       "Web de marca a medida",
       "Reservas online",
-      "WhatsApp que responde solo",
     ],
   },
   {
@@ -25,6 +24,7 @@ const PLANES = [
     gancho: "Nuevas clientas entrando cada mes.",
     incluye: [
       "Todo lo de Crecimiento",
+      "WhatsApp que responde solo",
       "Contenido y redes",
       "Publicidad en Google y Meta",
     ],
