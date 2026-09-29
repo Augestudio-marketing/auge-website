@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { enviarEmailDiagnostico } from "@/lib/email";
+import { enviarEmailDiagnostico, enviarNotificacionDiagnostico } from "@/lib/email";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -38,6 +38,15 @@ export async function POST(request: Request) {
   }
 
   await enviarEmailDiagnostico(email, nombre);
+  await enviarNotificacionDiagnostico({
+    nombre,
+    email,
+    instagramWeb: instagramWeb || undefined,
+    whatsapp: whatsapp || undefined,
+    nivel: nivel ?? "—",
+    nota: nota ?? 0,
+    dejarDeHacer: respuestas?.dejar_de_hacer,
+  });
 
   return NextResponse.json({ ok: true });
 }

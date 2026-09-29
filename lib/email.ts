@@ -1,5 +1,6 @@
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM = "AUGE <hola@augestudio.es>";
+const ADMIN_EMAIL = "miriamsou98@gmail.com";
 
 async function enviarEmail(to: string, subject: string, html: string) {
   if (!RESEND_API_KEY) {
@@ -60,6 +61,28 @@ export async function enviarEmailDiagnostico(to: string, nombre: string) {
     { texto: "Reservar llamada", href: "https://app.augestudio.es/reservar" },
   ]);
   await enviarEmail(to, "Tu diagnóstico AUGE está aquí.", html);
+}
+
+export async function enviarNotificacionDiagnostico(datos: {
+  nombre: string;
+  email: string;
+  instagramWeb?: string;
+  whatsapp?: string;
+  nivel: string;
+  nota: number;
+  dejarDeHacer?: string;
+}) {
+  const contenido = `
+    <p><strong>Nuevo diagnóstico completado.</strong></p>
+    <p>Nombre: ${datos.nombre}</p>
+    <p>Email: ${datos.email}</p>
+    ${datos.instagramWeb ? `<p>Instagram/web: ${datos.instagramWeb}</p>` : ""}
+    ${datos.whatsapp ? `<p>Teléfono: ${datos.whatsapp}</p>` : ""}
+    <p>Nivel: ${datos.nivel} (${datos.nota}/100)</p>
+    ${datos.dejarDeHacer ? `<p>Le gustaría dejar de hacer: "${datos.dejarDeHacer}"</p>` : ""}
+  `;
+  const html = plantillaBase(contenido, []);
+  await enviarEmail(ADMIN_EMAIL, `Nuevo diagnóstico: ${datos.nombre}`, html);
 }
 
 export async function enviarEmailSeguimiento(to: string) {
