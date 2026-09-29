@@ -221,7 +221,7 @@ export default function QuizCTA() {
   const whatsappHref = "https://wa.me/34613803022?text=" + encodeURIComponent(resumenWhatsapp);
 
   const bookingHref =
-    "https://auge-app-liart.vercel.app/reservar?" +
+    "https://app.augestudio.es/reservar?" +
     new URLSearchParams({
       nombre: lead.nombre,
       negocio: lead.negocio,
