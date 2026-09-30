@@ -31,9 +31,9 @@ export default function Home() {
         <Problema />
         <Giro />
         <SietePiezas />
+        <PlanesHome />
         <Sistema />
         <Metodo />
-        <PlanesHome />
         <Manifiesto />
         <Miriam />
         <ConQuien />

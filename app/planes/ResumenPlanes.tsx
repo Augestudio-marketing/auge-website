@@ -5,9 +5,12 @@ import { PLANES } from "./datos";
 export default function ResumenPlanes({
   base = "",
   Titulo = "h2",
+  compacto = true,
 }: {
   base?: string;
   Titulo?: "h2" | "h3";
+  // En móvil, `compacto` muestra solo nombre y precio; si no, añade descripción y enlace.
+  compacto?: boolean;
 }) {
   return (
     <div className="mt-8 grid border-y border-stone/15 md:grid-cols-3 md:border-y-0">
@@ -17,7 +20,7 @@ export default function ResumenPlanes({
           <a
             key={plan.id}
             href={`${base}#${plan.id}`}
-            className={`group relative flex items-center justify-between gap-6 px-1 py-6 transition-colors md:flex-col md:items-start md:justify-start md:px-8 md:py-10 ${
+            className={`group relative flex items-center justify-between gap-6 px-1 py-6 ${compacto ? "" : "flex-wrap gap-y-4"} transition-colors md:flex-col md:items-start md:justify-start md:px-8 md:py-10 ${
               i > 0 ? "border-t border-stone/15 md:border-t-0" : ""
             } ${
               destacado
@@ -68,6 +71,25 @@ export default function ResumenPlanes({
                 + {plan.cuota.actual}/mes
               </p>
             </div>
+
+            {!compacto && (
+              <div className="w-full md:hidden">
+                <p
+                  className={`text-sm leading-relaxed ${
+                    destacado ? "text-cream/75" : "text-stone/65"
+                  }`}
+                >
+                  {plan.corto}
+                </p>
+                <p
+                  className={`mt-4 text-xs uppercase tracking-widest ${
+                    destacado ? "text-cream/85" : "text-burgundy"
+                  }`}
+                >
+                  Ver el plan {base ? "→" : "↓"}
+                </p>
+              </div>
+            )}
 
             <span
               className={`hidden text-xs uppercase tracking-widest md:mt-8 md:block ${

@@ -4,7 +4,7 @@ import ResumenPlanes from "../planes/ResumenPlanes";
 
 export default function PlanesHome() {
   return (
-    <section id="planes" className="bg-cream px-6 py-20 md:px-10 md:py-28">
+    <section id="planes" className="bg-hueso px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-xs uppercase tracking-widest2 text-burgundy">
@@ -23,7 +23,7 @@ export default function PlanesHome() {
 
         <Reveal delay={150} className="mt-14">
           <Etiqueta>Condiciones especiales actuales</Etiqueta>
-          <ResumenPlanes base="/planes" Titulo="h3" />
+          <ResumenPlanes base="/planes" Titulo="h3" compacto={false} />
           <div className="mt-10 text-center">
             <a
               href="/planes"
