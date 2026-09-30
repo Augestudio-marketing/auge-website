@@ -117,7 +117,7 @@ export default function DiagnosticoLanding() {
         {paso === "intro" && (
           <div className="text-center">
             <p className="text-xs uppercase tracking-widest text-burgundy">
-              Diagnóstico gratuito · Negocios de belleza y estética
+              Diagnóstico gratuito
             </p>
             <h1 className="mx-auto mt-4 max-w-2xl font-display text-4xl leading-tight text-stone sm:text-5xl">
               ¿Cuánto depende
@@ -131,17 +131,6 @@ export default function DiagnosticoLanding() {
               descubre qué parte de tu día a día ya podría funcionar sin que
               tengas que estar encima.
             </p>
-
-            <div className="mx-auto mt-8 flex max-w-lg flex-wrap items-center justify-center gap-2 text-xs uppercase tracking-widest text-stone/50">
-              {["100% gratis", "4 minutos", "Resultado inmediato", "Sin compromiso"].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-stone/15 bg-white px-4 py-2"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
 
             <button
               type="button"

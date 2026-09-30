@@ -49,7 +49,7 @@ export default function Header() {
         </nav>
 
         <a
-          href="/#diagnostico"
+          href="/diagnostico"
           className="whitespace-nowrap rounded-full border border-burgundy bg-burgundy px-4 py-2 text-xs text-cream transition-colors duration-300 hover:bg-transparent hover:text-burgundy sm:px-5 sm:text-sm"
         >
           <span className="sm:hidden">Diagnóstico</span>
