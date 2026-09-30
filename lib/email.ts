@@ -3,7 +3,7 @@ const FROM = "AUGE <hola@augestudio.es>";
 const ADMIN_EMAIL = "miriamsou98@gmail.com";
 
 const FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
-const VINO = "#7A1F3D";
+const VINO = "#5C1A1B";
 const TINTA = "#111114";
 const GRIS = "#6B6C74";
 const GRIS_CLARO = "#F6F7F9";
