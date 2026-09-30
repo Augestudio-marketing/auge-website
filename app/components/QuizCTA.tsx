@@ -15,115 +15,117 @@ type Pregunta = {
 const PREGUNTAS: Pregunta[] = [
   {
     id: "reserva",
-    pregunta: "Cuando una clienta quiere reservar, ¿qué suele hacer?",
+    pregunta: "Cuando alguien quiere reservar contigo, ¿por dónde te suele llegar ese mensaje?",
     tipo: "opciones",
     opciones: [
-      { texto: "Reserva directamente online.", puntos: 0 },
-      { texto: "Me escribe por WhatsApp.", puntos: 2 },
-      { texto: "Me llama.", puntos: 2 },
-      { texto: "Depende del servicio.", puntos: 1 },
+      { texto: "Me escribe por Instagram o WhatsApp y se lo gestiono yo.", puntos: 2.5 },
+      { texto: "Reserva directamente en Booksy, mi web o mi calendario online.", puntos: 0 },
+      { texto: "Depende del día: a veces por redes, a veces me paran por la calle.", puntos: 3 },
+      { texto: "Me llama por teléfono.", puntos: 2 },
     ],
   },
   {
     id: "confirmacion",
-    pregunta: "¿Quién confirma las citas?",
+    pregunta: "La noche antes de una cita, ¿qué suele pasar?",
     tipo: "opciones",
     opciones: [
-      { texto: "Se confirma automáticamente.", puntos: 0 },
-      { texto: "Lo hago yo o mi equipo, manualmente.", puntos: 3 },
-      { texto: "Algunas sí y otras no.", puntos: 1.5 },
+      { texto: "Le escribo yo un mensaje para asegurarme de que se acuerda.", puntos: 2.5 },
+      { texto: "Cruzo los dedos para que no se le olvide.", puntos: 3 },
+      { texto: "El recordatorio sale solo, no tengo que pensarlo.", puntos: 0 },
+      { texto: "Tengo recordatorios automáticos, pero igual reviso por si acaso.", puntos: 1.5 },
     ],
   },
   {
     id: "reactivacion",
-    pregunta: "Si una clienta no viene desde hace 6 meses...",
+    pregunta: "Piensa en alguien que antes venía cada mes y ya no aparece. ¿Qué pasó?",
     tipo: "opciones",
     opciones: [
-      { texto: "Tenemos un sistema que la vuelve a contactar.", puntos: 0 },
-      { texto: "Lo hacemos cuando nos acordamos.", puntos: 2 },
-      { texto: "No hacemos seguimiento.", puntos: 3 },
+      { texto: "En algún momento me acuerdo y le escribo yo.", puntos: 2 },
+      { texto: "Sinceramente, ni me había dado cuenta hasta leer esta pregunta.", puntos: 3 },
+      { texto: "Algo se activa solo y vuelve a saber de nosotros sin que yo intervenga.", puntos: 0 },
     ],
   },
   {
     id: "resenas",
-    pregunta: "Después de una cita, ¿cómo pides una reseña?",
+    pregunta: "Acaba de irse alguien encantada con el resultado. ¿Le llega algo pidiéndole una reseña?",
     tipo: "opciones",
     opciones: [
-      { texto: "Automáticamente.", puntos: 0 },
-      { texto: "Se lo pedimos nosotras.", puntos: 1.5 },
-      { texto: "Cuando nos acordamos.", puntos: 2.5 },
-      { texto: "No la pedimos.", puntos: 3 },
+      { texto: "Se lo pido yo, si me acuerdo antes de que salga por la puerta.", puntos: 2 },
+      { texto: "Sí, siempre, sin que tenga que acordarme.", puntos: 0 },
+      { texto: "Casi nunca, se me pasa entre una cosa y otra.", puntos: 3 },
     ],
   },
   {
     id: "repetitivas",
-    pregunta: "¿Cuánto tiempo pasas respondiendo preguntas que se repiten?",
+    pregunta:
+      "Esta semana, ¿cuántas veces has escrito algo como \"sí, tenemos hueco el jueves\" o \"el precio es...\" por WhatsApp o Instagram?",
     tipo: "opciones",
     opciones: [
-      { texto: "Casi nada.", puntos: 0 },
-      { texto: "Un rato cada día.", puntos: 1.5 },
-      { texto: "Demasiado.", puntos: 3 },
+      { texto: "Un par de veces, lo normal.", puntos: 1.5 },
+      { texto: "Constantemente. A veces siento que es casi un segundo trabajo.", puntos: 3 },
+      { texto: "Ninguna, eso ya lo resuelve otra cosa por mí.", puntos: 0 },
     ],
   },
   {
     id: "web_reserva",
-    pregunta: "¿Tu web permite reservar sin hablar contigo?",
+    pregunta: "Si apagaras el móvil dos horas ahora mismo, ¿alguien podría reservar contigo igualmente?",
     tipo: "opciones",
     opciones: [
-      { texto: "Sí.", puntos: 0 },
-      { texto: "Parcialmente.", puntos: 1.5 },
-      { texto: "No.", puntos: 3 },
+      { texto: "Sí, sin ningún problema.", puntos: 0 },
+      { texto: "Solo si ya me conoce y sabe que puede dejarme un mensaje para luego.", puntos: 1.5 },
+      { texto: "No, tendría que esperar a que yo lo vea.", puntos: 3 },
     ],
   },
   {
     id: "disponibilidad",
-    pregunta: "¿Qué ocurre cuando tú no estás disponible?",
+    pregunta: "Un día te pones mala y no puedes abrir. ¿Qué pasa con las citas de ese día?",
     tipo: "opciones",
     opciones: [
-      { texto: "El negocio sigue funcionando prácticamente igual.", puntos: 0 },
-      { texto: "Algunas cosas se paran.", puntos: 1.5 },
-      { texto: "Se para bastante.", puntos: 3 },
+      { texto: "Tengo que escribir una a una para avisar y reorganizar.", puntos: 2.5 },
+      { texto: "Se genera un pequeño lío y alguien se molesta.", puntos: 3 },
+      { texto: "Se reorganiza casi solo, o alguien de mi equipo lo resuelve sin mí.", puntos: 0 },
     ],
   },
   {
     id: "herramientas",
-    pregunta: "¿Tus herramientas están conectadas entre sí?",
+    pregunta: "Entre Booksy, Instagram, WhatsApp y la libreta de siempre, ¿cómo llevas el control de todo?",
     tipo: "opciones",
     opciones: [
-      { texto: "Sí.", puntos: 0 },
-      { texto: "Algunas.", puntos: 1.5 },
-      { texto: "Cada cosa va por su lado.", puntos: 3 },
-      { texto: "No sé.", puntos: 2 },
+      { texto: "Cada cosa va por su lado. Alguna vez se me han cruzado dos citas.", puntos: 3 },
+      { texto: "Todo está conectado, tengo una vista clara de lo que pasa cada día.", puntos: 0 },
+      { texto: "Más o menos, aunque tengo que mirar en varios sitios a la vez.", puntos: 1.5 },
+      { texto: "Prefiero no pensarlo demasiado.", puntos: 2 },
     ],
   },
   {
     id: "churn_conocido",
-    pregunta: "¿Sabes cuántas clientas dejaron de venir durante los últimos 6 meses?",
+    pregunta: "Si te preguntara ahora mismo cuántas personas han dejado de venir en los últimos 6 meses, ¿sabrías decírmelo?",
     tipo: "opciones",
     opciones: [
-      { texto: "Sí.", puntos: 0 },
-      { texto: "Aproximadamente.", puntos: 1 },
-      { texto: "No.", puntos: 2 },
+      { texto: "Una idea aproximada.", puntos: 1 },
+      { texto: "Sí, tengo esa cifra bastante clara.", puntos: 0 },
+      { texto: "Ni idea, la verdad.", puntos: 2 },
     ],
   },
   {
     id: "escala_dependencia",
-    pregunta: "¿Cuánto depende de ti el día a día? (1 = nada, 10 = todo)",
+    pregunta: "Si desaparecieras una semana entera, del 1 al 10, ¿cuánto se notaría en tu negocio?",
     tipo: "escala",
   },
   {
     id: "picos_demanda",
-    pregunta: "Si mañana entraran 20 clientas nuevas...",
+    pregunta:
+      "Mañana te etiquetan en un vídeo que se hace viral y te llegan 30 mensajes pidiendo cita. ¿Qué es lo primero que sientes?",
     tipo: "opciones",
     opciones: [
-      { texto: "Estamos preparadas.", puntos: 0 },
-      { texto: "Tendríamos que organizarnos.", puntos: 1.5 },
-      { texto: "Sería bastante caótico.", puntos: 3 },
+      { texto: "Que voy a tener que organizarme un fin de semana entero para no perder nada.", puntos: 1.5 },
+      { texto: "Ilusión: lo tengo todo listo para absorber esa demanda.", puntos: 0 },
+      { texto: "Agobio. Sé que se me van a escapar mensajes por el camino.", puntos: 3 },
     ],
   },
   {
     id: "dejar_de_hacer",
-    pregunta: "¿Qué es lo que más te gustaría dejar de hacer personalmente?",
+    pregunta: "Si mañana pudieras dejar de encargarte tú de UNA sola cosa en tu negocio, ¿cuál sería?",
     tipo: "abierta",
   },
 ];
@@ -254,9 +256,11 @@ export default function QuizCTA() {
               Descúbrelo en 4 minutos.
             </p>
             <p className="mx-auto mt-6 max-w-xl leading-relaxed text-cream/70">
-              Tu negocio puede estar funcionando perfectamente y, aun así,
-              depender demasiado de ti. Responde 12 preguntas y descubre qué
-              partes de tu negocio siguen pasando por tus manos.
+              Entre Booksy, WhatsApp, Instagram y la libreta de siempre, es
+              fácil perder de vista cuántas cosas dependen todavía de ti.
+              Responde 12 preguntas pensadas para negocios como el tuyo y
+              descubre qué parte de tu día a día ya podría funcionar sin que
+              tengas que estar encima.
             </p>
             <p className="mt-4 text-xs uppercase tracking-widest text-cream/45">
               12 preguntas · 4 minutos · resultado inmediato
@@ -318,8 +322,8 @@ export default function QuizCTA() {
                   ))}
                 </div>
                 <div className="mt-2 flex justify-between text-xs uppercase tracking-widest text-cream/40">
-                  <span>Nada</span>
-                  <span>Todo</span>
+                  <span>Ni se enteran</span>
+                  <span>Se para todo</span>
                 </div>
               </div>
             )}
