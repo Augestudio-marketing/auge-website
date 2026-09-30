@@ -115,7 +115,7 @@ export default function QuizCTA() {
               <span className="italic">tu negocio de ti?</span>
             </h2>
             <p className="mx-auto mt-4 text-sm uppercase tracking-widest text-cream/50">
-              Descúbrelo en 4 minutos.
+              Descúbrelo en 12 preguntas.
             </p>
             <p className="mx-auto mt-6 max-w-xl leading-relaxed text-cream/70">
               Entre Booksy, WhatsApp, Instagram y la libreta de siempre, es
