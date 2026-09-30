@@ -95,7 +95,7 @@ export default function Sistema() {
                   y1={50}
                   x2={p.x}
                   y2={p.y}
-                  stroke={active === i ? "#5C1A1B" : "#2B262233"}
+                  stroke={active === i ? "#7A1F3D" : "#2B262233"}
                   strokeWidth={active === i ? 0.4 : 0.25}
                   className="transition-all duration-300"
                 />

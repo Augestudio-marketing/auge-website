@@ -8,8 +8,8 @@ const config: Config = {
         cream: "#F5F0E8",
         marfil: "#F0EAE0",
         hueso: "#EBE2D0",
-        burgundy: "#5C1A1B",
-        "burgundy-deep": "#3D1014",
+        burgundy: "#7A1F3D",
+        "burgundy-deep": "#4A1326",
         stone: "#2B2622",
       },
       fontFamily: {
