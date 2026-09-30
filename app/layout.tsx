@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Inter, Caveat } from "next/font/google";
 import "./globals.css";
+import GoogleTag from "./components/GoogleTag";
 
 const displaySerif = DM_Serif_Display({
   subsets: ["latin"],
@@ -51,6 +52,7 @@ export default function RootLayout({
         className={`${displaySerif.variable} ${inter.variable} ${caveat.variable} font-sans antialiased`}
       >
         {children}
+        <GoogleTag />
       </body>
     </html>
   );

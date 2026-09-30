@@ -11,6 +11,7 @@ import {
   calcularNivel,
   calcularFugaPrincipal,
 } from "@/lib/diagnostico";
+import { registrarConversion } from "@/lib/analytics";
 
 type Paso = "intro" | number | "pausa" | "lead" | "resultado";
 
@@ -90,6 +91,7 @@ export default function DiagnosticoLanding() {
   function handleLeadSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setPaso("resultado");
+    registrarConversion("diagnostico");
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     const instagramWeb = [lead.instagram, lead.web].filter(Boolean).join(" · ");
