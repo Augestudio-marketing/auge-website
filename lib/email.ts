@@ -1,5 +1,5 @@
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const FROM = "AUGE <info@augestudio.es>";
+const FROM = "AUGE <hola@augestudio.es>";
 const ADMIN_EMAIL = "miriamsou98@gmail.com";
 
 async function enviarEmail(to: string, subject: string, html: string) {
