@@ -117,7 +117,7 @@ export const PREGUNTAS: Pregunta[] = [
     pregunta: "¿En qué momento está ahora mismo tu negocio?",
     tipo: "opciones",
     opciones: [
-      { texto: "Estoy empezando y todavía estoy construyendo mi cartera de clientas.", puntos: 0 },
+      { texto: "Estoy empezando y todavía estoy construyendo mi cartera de clientela.", puntos: 0 },
       { texto: "Ya tengo una cartera estable y quiero organizar mejor el negocio.", puntos: 0 },
       { texto: "Tengo una agenda bastante llena y quiero que funcione mejor sin depender tanto de mí.", puntos: 0 },
       { texto: "Tengo equipo o profesionales y quiero profesionalizar y escalar la estructura.", puntos: 0 },
@@ -134,7 +134,7 @@ export const PREGUNTAS: Pregunta[] = [
       { texto: "Clientela que podría volver.", puntos: 1.5, area: "clientas" },
       { texto: "Tranquilidad y capacidad para desconectar.", puntos: 1.5, area: "dependencia" },
       { texto: "Posibilidades de hacer crecer el negocio.", puntos: 1.5 },
-      { texto: "No estoy segura, pero sé que no quiero seguir así.", puntos: 2 },
+      { texto: "No lo tengo claro, pero sé que no quiero seguir así.", puntos: 2 },
     ],
   },
   {
@@ -146,7 +146,7 @@ export const PREGUNTAS: Pregunta[] = [
       { texto: "No tener tiempo para crecer.", puntos: 2, area: "dependencia" },
       { texto: "Seguir perdiendo oportunidades por no poder atenderlas.", puntos: 2, area: "agenda" },
       { texto: "Sentir que trabajo cada vez más, pero no avanzo.", puntos: 2.5, area: "dependencia" },
-      { texto: "Nada especialmente. Ahora mismo estoy bastante cómoda así.", puntos: 0 },
+      { texto: "Nada especialmente. Ahora mismo estoy bastante a gusto así.", puntos: 0 },
     ],
   },
   {
@@ -214,7 +214,7 @@ export const INTENCION_OPCIONES = [
   { texto: "Solo quiero entender qué podría mejorar.", valor: "curiosidad" },
   { texto: "Estoy buscando soluciones y quiero comparar opciones.", valor: "investigacion" },
   { texto: "Quiero solucionarlo cuanto antes.", valor: "alta" },
-  { texto: "Si encuentro algo que tenga sentido para mi negocio, estoy preparada para invertir.", valor: "alta" },
+  { texto: "Si encuentro algo que tenga sentido para mi negocio, estoy lista para invertir.", valor: "alta" },
 ];
 
 function opcionesSeleccionadas(respuesta: string) {
