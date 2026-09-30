@@ -2,6 +2,13 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM = "AUGE <hola@augestudio.es>";
 const ADMIN_EMAIL = "miriamsou98@gmail.com";
 
+const FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
+const VINO = "#7A1F3D";
+const TINTA = "#111114";
+const GRIS = "#6B6C74";
+const GRIS_CLARO = "#F6F7F9";
+const BORDE = "#ECECEF";
+
 async function enviarEmail(to: string, subject: string, html: string) {
   if (!RESEND_API_KEY) {
     console.warn("RESEND_API_KEY no configurada; no se envía email a", to);
@@ -28,33 +35,45 @@ async function enviarEmail(to: string, subject: string, html: string) {
 
 function plantillaBase(contenido: string, botones: { texto: string; href: string }[]) {
   return `
-    <div style="font-family: Georgia, serif; background:#F5F0E8; padding: 40px 20px;">
-      <div style="max-width: 480px; margin: 0 auto; background:#ffffff; border-radius: 16px; padding: 40px;">
-        <p style="font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color:#5C1A1B; margin: 0 0 24px;">
-          auge.studio
+    <div style="font-family: ${FONT}; background:${GRIS_CLARO}; padding: 40px 20px;">
+      <div style="max-width: 480px; margin: 0 auto; background:#ffffff; border-radius: 20px; padding: 40px; border: 1px solid ${BORDE};">
+        <p style="margin: 0 0 28px; font-size: 18px; line-height: 1;">
+          <span style="font-weight: 800; color:${TINTA};">auge</span><span style="font-weight: 400; color:${TINTA};">.studio</span>
         </p>
-        <div style="font-size: 15px; line-height: 1.7; color:#2B2622;">
+        <div style="font-size: 15px; line-height: 1.7; color:${TINTA};">
           ${contenido}
         </div>
         ${botones
           .map(
             (b) => `
-          <a href="${b.href}" style="display:block; margin-top: 20px; background:#5C1A1B; color:#F5F0E8; text-decoration:none; text-align:center; padding: 14px; border-radius: 999px; font-size: 13px; letter-spacing: 1px; text-transform: uppercase;">
+          <a href="${b.href}" style="display:block; margin-top: 16px; background:${VINO}; color:#ffffff; text-decoration:none; text-align:center; padding: 14px; border-radius: 999px; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; font-weight:600;">
             ${b.texto}
           </a>`
           )
           .join("")}
+        <p style="margin: 32px 0 0; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color:#9a9ba3;">
+          auge.studio · Aesthetic Marketing
+        </p>
       </div>
     </div>
   `;
 }
 
+function filaTabla(etiqueta: string, valor: string) {
+  return `
+    <tr>
+      <td style="padding:7px 0; color:${GRIS}; font-size:13px;">${etiqueta}</td>
+      <td style="padding:7px 0; text-align:right; font-size:14px; color:${TINTA};">${valor}</td>
+    </tr>
+  `;
+}
+
 export async function enviarEmailDiagnostico(to: string, nombre: string) {
   const contenido = `
-    <p>Hola, ${nombre || ""}.</p>
-    <p>Ya tienes tu diagnóstico.</p>
-    <p>Hay algo que probablemente ya sabías: tu negocio funciona, pero todavía depende demasiado de ti.</p>
-    <p>Y si quieres que lo veamos juntas, puedes reservar una llamada con AUGE.</p>
+    <p style="margin:0 0 6px; font-size:20px; font-weight:600;">Hola${nombre ? `, ${nombre}` : ""}.</p>
+    <p style="margin:0 0 16px; color:${GRIS};">Ya tienes tu diagnóstico.</p>
+    <p style="margin:0 0 16px;">Hay algo que probablemente ya sabías: tu negocio funciona, pero todavía depende demasiado de ti.</p>
+    <p style="margin:0; color:${GRIS};">Y si quieres que lo veamos juntas, puedes reservar una llamada con AUGE.</p>
   `;
   const html = plantillaBase(contenido, [
     { texto: "Ver mi diagnóstico", href: "https://augestudio.es/#diagnostico" },
@@ -73,13 +92,19 @@ export async function enviarNotificacionDiagnostico(datos: {
   dejarDeHacer?: string;
 }) {
   const contenido = `
-    <p><strong>Nuevo diagnóstico completado.</strong></p>
-    <p>Nombre: ${datos.nombre}</p>
-    <p>Email: ${datos.email}</p>
-    ${datos.instagramWeb ? `<p>Instagram/web: ${datos.instagramWeb}</p>` : ""}
-    ${datos.whatsapp ? `<p>Teléfono: ${datos.whatsapp}</p>` : ""}
-    <p>Nivel: ${datos.nivel} (${datos.nota}/100)</p>
-    ${datos.dejarDeHacer ? `<p>Le gustaría dejar de hacer: "${datos.dejarDeHacer}"</p>` : ""}
+    <p style="margin:0 0 4px; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:${VINO};">Nuevo diagnóstico</p>
+    <p style="margin:0 0 20px; font-size:20px; font-weight:600;">${datos.nombre}</p>
+    <table style="width:100%; border-collapse:collapse; border-top:1px solid ${BORDE};">
+      ${filaTabla("Email", datos.email)}
+      ${datos.instagramWeb ? filaTabla("Instagram/web", datos.instagramWeb) : ""}
+      ${datos.whatsapp ? filaTabla("Teléfono", datos.whatsapp) : ""}
+      ${filaTabla("Nivel", `${datos.nivel} (${datos.nota}/100)`)}
+    </table>
+    ${
+      datos.dejarDeHacer
+        ? `<p style="margin:20px 0 0; padding:16px 20px; background:${GRIS_CLARO}; border-radius:12px; font-style:italic; color:${GRIS};">"Le gustaría dejar de hacer: ${datos.dejarDeHacer}"</p>`
+        : ""
+    }
   `;
   const html = plantillaBase(contenido, []);
   await enviarEmail(ADMIN_EMAIL, `Nuevo diagnóstico: ${datos.nombre}`, html);
@@ -87,9 +112,9 @@ export async function enviarNotificacionDiagnostico(datos: {
 
 export async function enviarEmailSeguimiento(to: string) {
   const contenido = `
-    <p>¿Qué pasaría si durante una semana no pudieras estar pendiente de WhatsApp, reservas y seguimiento?</p>
-    <p>Esa pregunta dice mucho más sobre un negocio de lo que parece.</p>
-    <p>Y precisamente por eso creamos AUGE.</p>
+    <p style="margin:0 0 16px;">¿Qué pasaría si durante una semana no pudieras estar pendiente de WhatsApp, reservas y seguimiento?</p>
+    <p style="margin:0 0 16px; color:${GRIS};">Esa pregunta dice mucho más sobre un negocio de lo que parece.</p>
+    <p style="margin:0;">Y precisamente por eso creamos AUGE.</p>
   `;
   const html = plantillaBase(contenido, [
     { texto: "Ver mi diagnóstico", href: "https://augestudio.es/#diagnostico" },
