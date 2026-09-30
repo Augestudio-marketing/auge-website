@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { WHATSAPP_NUMERO, registrarConversion } from "@/lib/analytics";
 
-const MENSAJE_POR_DEFECTO = "Hola, he visto AUGE en Google y me gustaría hablar con vosotros.";
+const MENSAJE_POR_DEFECTO = "Hola, me gustaría recibir más información sobre AUGE.";
 
 function enlaceWhatsapp(): string {
   let texto = MENSAJE_POR_DEFECTO;
