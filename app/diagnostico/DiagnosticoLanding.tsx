@@ -2,9 +2,17 @@
 
 import { useState, type FormEvent } from "react";
 import Image from "next/image";
-import { PREGUNTAS, calcularNota, calcularNivel } from "@/lib/diagnostico";
+import {
+  PREGUNTAS,
+  INTENCION_OPCIONES,
+  SEPARADOR_MULTIPLE,
+  OPCION_TODO_PASA_POR_MI,
+  calcularNota,
+  calcularNivel,
+  calcularFugaPrincipal,
+} from "@/lib/diagnostico";
 
-type Paso = "intro" | number | "lead" | "resultado";
+type Paso = "intro" | number | "pausa" | "lead" | "resultado";
 
 const PASOS_PROCESO = [
   {
@@ -28,11 +36,14 @@ export default function DiagnosticoLanding() {
   const [paso, setPaso] = useState<Paso>("intro");
   const [respuestas, setRespuestas] = useState<Record<string, string>>({});
   const [abiertaActual, setAbiertaActual] = useState("");
+  const [seleccionMultiple, setSeleccionMultiple] = useState<string[]>([]);
   const [lead, setLead] = useState({
     nombre: "",
     email: "",
-    instagramWeb: "",
+    instagram: "",
+    web: "",
     whatsapp: "",
+    intencion: "",
     consentimiento: false,
   });
 
@@ -40,7 +51,7 @@ export default function DiagnosticoLanding() {
     if (actual + 1 < PREGUNTAS.length) {
       setPaso(actual + 1);
     } else {
-      setPaso("lead");
+      setPaso("pausa");
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -50,8 +61,19 @@ export default function DiagnosticoLanding() {
     avanzar(typeof paso === "number" ? paso : 0);
   }
 
-  function responderEscala(id: string, valor: number) {
-    setRespuestas({ ...respuestas, [id]: String(valor) });
+  function toggleMultiple(texto: string) {
+    setSeleccionMultiple((prev) => {
+      if (texto === OPCION_TODO_PASA_POR_MI) {
+        return prev.includes(texto) ? [] : [texto];
+      }
+      const sinTodo = prev.filter((t) => t !== OPCION_TODO_PASA_POR_MI);
+      return sinTodo.includes(texto) ? sinTodo.filter((t) => t !== texto) : [...sinTodo, texto];
+    });
+  }
+
+  function confirmarMultiple(id: string) {
+    setRespuestas({ ...respuestas, [id]: seleccionMultiple.join(SEPARADOR_MULTIPLE) });
+    setSeleccionMultiple([]);
     avanzar(typeof paso === "number" ? paso : 0);
   }
 
@@ -63,11 +85,14 @@ export default function DiagnosticoLanding() {
 
   const nota = calcularNota(respuestas);
   const nivel = calcularNivel(nota);
+  const fuga = calcularFugaPrincipal(respuestas);
 
   function handleLeadSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setPaso("resultado");
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    const instagramWeb = [lead.instagram, lead.web].filter(Boolean).join(" · ");
 
     fetch("/api/lead", {
       method: "POST",
@@ -75,18 +100,18 @@ export default function DiagnosticoLanding() {
       body: JSON.stringify({
         nombre: lead.nombre,
         email: lead.email,
-        instagramWeb: lead.instagramWeb,
+        instagramWeb,
         whatsapp: lead.whatsapp,
         nota,
         nivel: nivel.titulo,
-        fugaPrincipal: nivel.titulo,
+        fugaPrincipal: fuga.titulo,
         fugaSecundaria: respuestas.dejar_de_hacer ?? "",
-        respuestas,
+        respuestas: { ...respuestas, intencion_comercial: lead.intencion },
       }),
     }).catch((error) => console.error("Error guardando el diagnóstico", error));
   }
 
-  const resumenWhatsapp = `Hola, soy ${lead.nombre || ""}. Acabo de hacer el diagnóstico de AUGE (nivel: ${nivel.titulo}) y me gustaría reservar mi sesión.`;
+  const resumenWhatsapp = `Hola, soy ${lead.nombre || ""}. Acabo de hacer el diagnóstico de AUGE (${fuga.titulo}) y me gustaría reservar mi sesión.`;
   const whatsappHref = "https://wa.me/34613803022?text=" + encodeURIComponent(resumenWhatsapp);
 
   const bookingHref =
@@ -116,9 +141,7 @@ export default function DiagnosticoLanding() {
       <div className="mx-auto max-w-3xl px-6 pb-24 md:px-0">
         {paso === "intro" && (
           <div className="text-center">
-            <p className="text-xs uppercase tracking-widest text-burgundy">
-              Diagnóstico gratuito
-            </p>
+            <p className="text-xs uppercase tracking-widest text-burgundy">Diagnóstico gratuito</p>
             <h1 className="mx-auto mt-4 max-w-2xl font-display text-4xl leading-tight text-stone sm:text-5xl">
               ¿Cuánto depende
               <br />
@@ -185,24 +208,42 @@ export default function DiagnosticoLanding() {
               </div>
             )}
 
-            {preguntaActual.tipo === "escala" && (
+            {preguntaActual.tipo === "multiple" && (
               <div className="mx-auto mt-10 max-w-lg">
-                <div className="flex flex-wrap justify-center gap-2">
-                  {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
-                    <button
-                      key={n}
-                      type="button"
-                      onClick={() => responderEscala(preguntaActual.id, n)}
-                      className="flex h-11 w-11 items-center justify-center rounded-full border border-stone/15 text-stone transition-colors hover:border-burgundy hover:bg-burgundy hover:text-cream"
-                    >
-                      {n}
-                    </button>
-                  ))}
+                <div className="space-y-2">
+                  {preguntaActual.opciones?.map((opcion) => {
+                    const activa = seleccionMultiple.includes(opcion.texto);
+                    return (
+                      <button
+                        key={opcion.texto}
+                        type="button"
+                        onClick={() => toggleMultiple(opcion.texto)}
+                        className={`flex w-full items-center gap-3 rounded-2xl border px-6 py-3.5 text-left transition-all duration-150 ${
+                          activa
+                            ? "border-burgundy bg-burgundy/5 text-stone"
+                            : "border-stone/12 text-stone/80 hover:border-burgundy/40"
+                        }`}
+                      >
+                        <span
+                          className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border ${
+                            activa ? "border-burgundy bg-burgundy" : "border-stone/25"
+                          }`}
+                        >
+                          {activa && <span className="h-2 w-2 rounded-sm bg-white" />}
+                        </span>
+                        {opcion.texto}
+                      </button>
+                    );
+                  })}
                 </div>
-                <div className="mt-3 flex justify-between text-xs uppercase tracking-widest text-stone/40">
-                  <span>Ni se enteran</span>
-                  <span>Se para todo</span>
-                </div>
+                <button
+                  type="button"
+                  disabled={seleccionMultiple.length === 0}
+                  onClick={() => confirmarMultiple(preguntaActual.id)}
+                  className="mt-5 w-full rounded-full border border-burgundy bg-burgundy py-3.5 text-sm uppercase tracking-widest text-cream transition-colors duration-300 hover:bg-transparent hover:text-burgundy disabled:opacity-40"
+                >
+                  Continuar →
+                </button>
               </div>
             )}
 
@@ -212,7 +253,7 @@ export default function DiagnosticoLanding() {
                   value={abiertaActual}
                   onChange={(e) => setAbiertaActual(e.target.value)}
                   rows={3}
-                  placeholder="Escribe tu respuesta..."
+                  placeholder={preguntaActual.placeholder ?? "Escribe tu respuesta..."}
                   className="w-full rounded-2xl border border-stone/15 bg-transparent px-6 py-4 text-stone outline-none placeholder:text-stone/35 focus:border-burgundy"
                 />
                 <button
@@ -240,14 +281,34 @@ export default function DiagnosticoLanding() {
           </div>
         )}
 
+        {paso === "pausa" && (
+          <div className="rounded-[28px] border border-stone/10 bg-white px-8 py-16 text-center shadow-xl shadow-stone/[0.06] sm:px-16">
+            <p className="font-display text-2xl italic text-stone sm:text-3xl">
+              Ya tenemos una primera lectura.
+            </p>
+            <p className="mx-auto mt-4 max-w-md leading-relaxed text-stone/60">
+              Hemos detectado cómo funciona hoy tu negocio y cuánto depende
+              todavía de ti. Ahora vamos a enseñarte dónde está tu principal
+              punto de fuga.
+            </p>
+            <button
+              type="button"
+              onClick={() => setPaso("lead")}
+              className="mt-8 inline-block rounded-full border border-burgundy bg-burgundy px-10 py-4 text-sm uppercase tracking-widest text-cream transition-colors duration-300 hover:bg-transparent hover:text-burgundy"
+            >
+              Ver mi resultado →
+            </button>
+          </div>
+        )}
+
         {paso === "lead" && (
           <div className="mx-auto max-w-md rounded-[28px] border border-stone/10 bg-white px-8 py-12 shadow-xl shadow-stone/[0.06] md:px-12">
             <p className="text-center font-display text-2xl italic text-stone">
-              Hemos analizado tus respuestas.
+              Para preparar tu diagnóstico
             </p>
             <p className="mt-3 text-center text-sm leading-relaxed text-stone/55">
-              Hay varias áreas de tu negocio que podrías dejar de gestionar
-              personalmente. ¿Quieres ver tu diagnóstico completo?
+              Te enviaremos tu resultado y, si quieres, podrás pedirnos que lo
+              revisemos contigo.
             </p>
 
             <form onSubmit={handleLeadSubmit} className="mt-9 space-y-5">
@@ -272,11 +333,20 @@ export default function DiagnosticoLanding() {
                 />
               </div>
               <div>
-                <label className="text-xs uppercase tracking-widest text-stone/45">Instagram o web</label>
+                <label className="text-xs uppercase tracking-widest text-stone/45">Instagram de tu negocio</label>
                 <input
                   type="text"
-                  value={lead.instagramWeb}
-                  onChange={(e) => setLead({ ...lead, instagramWeb: e.target.value })}
+                  value={lead.instagram}
+                  onChange={(e) => setLead({ ...lead, instagram: e.target.value })}
+                  className="mt-2 w-full border-0 border-b border-stone/20 bg-transparent py-2 text-stone outline-none focus:border-burgundy"
+                />
+              </div>
+              <div>
+                <label className="text-xs uppercase tracking-widest text-stone/45">Web (opcional)</label>
+                <input
+                  type="text"
+                  value={lead.web}
+                  onChange={(e) => setLead({ ...lead, web: e.target.value })}
                   className="mt-2 w-full border-0 border-b border-stone/20 bg-transparent py-2 text-stone outline-none focus:border-burgundy"
                 />
               </div>
@@ -289,6 +359,28 @@ export default function DiagnosticoLanding() {
                   onChange={(e) => setLead({ ...lead, whatsapp: e.target.value })}
                   className="mt-2 w-full border-0 border-b border-stone/20 bg-transparent py-2 text-stone outline-none focus:border-burgundy"
                 />
+              </div>
+
+              <div>
+                <label className="text-xs uppercase tracking-widest text-stone/45">
+                  Si esto tuviera sentido para tu negocio...
+                </label>
+                <div className="mt-2 space-y-2">
+                  {INTENCION_OPCIONES.map((op) => (
+                    <label key={op.texto} className="flex items-start gap-2.5 text-sm text-stone/65">
+                      <input
+                        type="radio"
+                        name="intencion"
+                        required
+                        value={op.texto}
+                        checked={lead.intencion === op.texto}
+                        onChange={(e) => setLead({ ...lead, intencion: e.target.value })}
+                        className="mt-1"
+                      />
+                      {op.texto}
+                    </label>
+                  ))}
+                </div>
               </div>
 
               <label className="flex items-start gap-3 text-xs leading-relaxed text-stone/55">
@@ -317,20 +409,25 @@ export default function DiagnosticoLanding() {
             <p className="text-center text-xs uppercase tracking-widest text-stone/40">
               Tu diagnóstico, {lead.nombre}
             </p>
-            <p className="mt-5 text-center text-xs uppercase tracking-widest text-burgundy">
-              Nivel {nivel.id}
-            </p>
-            <p className="mt-2 text-center font-display text-3xl italic text-burgundy sm:text-4xl">
+            <p className="mt-4 text-center font-display text-3xl italic text-burgundy sm:text-4xl">
               {nivel.titulo}
             </p>
 
             <p className="mt-6 text-sm leading-relaxed text-stone/65">{nivel.texto}</p>
 
+            <div className="mt-8 rounded-2xl border border-burgundy/15 bg-burgundy/[0.03] p-6">
+              <p className="text-xs uppercase tracking-widest text-burgundy/70">
+                Tu principal punto de fuga
+              </p>
+              <p className="mt-2 font-display text-xl text-stone">{fuga.titulo}</p>
+              <p className="mt-2 text-sm leading-relaxed text-stone/60">{fuga.texto}</p>
+            </div>
+
             <div className="mt-10 border-t border-stone/12 pt-8 text-center">
               <p className="font-display text-xl italic text-stone">¿Quieres que lo veamos juntas?</p>
               <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-stone/55">
-                Si quieres, podemos revisar tu resultado contigo y enseñarte
-                qué cambiaríamos primero en tu negocio.
+                Podemos revisar tu resultado y enseñarte qué automatizaríamos
+                primero en tu negocio.
               </p>
             </div>
 
