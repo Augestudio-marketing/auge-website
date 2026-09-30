@@ -67,7 +67,7 @@ export default function Hero() {
           className="animate-fade-in-up mt-3 text-xs uppercase tracking-widest text-stone/45"
           style={{ animationDelay: "750ms" }}
         >
-          12 preguntas · 4 minutos · resultado inmediato
+          12 preguntas · resultado inmediato
         </p>
 
         <div

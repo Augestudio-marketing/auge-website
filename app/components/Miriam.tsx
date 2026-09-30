@@ -44,7 +44,7 @@ export default function Miriam() {
             </div>
 
             <p className="mt-10 border-t border-stone/15 pt-6 text-xs uppercase tracking-widest text-stone/45">
-              Founder · AUGE
+              Miriam · Founder AUGE
             </p>
           </Reveal>
         </div>

@@ -125,7 +125,7 @@ export default function QuizCTA() {
               tengas que estar encima.
             </p>
             <p className="mt-4 text-xs uppercase tracking-widest text-cream/45">
-              12 preguntas · 4 minutos · resultado inmediato
+              12 preguntas · resultado inmediato
             </p>
 
             <button

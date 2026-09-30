@@ -28,7 +28,7 @@ export default function CTAFinal() {
 
         <Reveal delay={350}>
           <p className="mt-10 text-xs uppercase tracking-widest text-cream/50">
-            12 preguntas · 4 minutos · resultado inmediato
+            12 preguntas · resultado inmediato
           </p>
           <div className="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:justify-center">
             <a

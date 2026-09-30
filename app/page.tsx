@@ -4,11 +4,8 @@ import Problema from "./components/Problema";
 import Giro from "./components/Giro";
 import SietePiezas from "./components/SietePiezas";
 import Sistema from "./components/Sistema";
-import Metodo from "./components/Metodo";
-import PlanesHome from "./components/PlanesHome";
 import Manifiesto from "./components/Manifiesto";
 import Miriam from "./components/Miriam";
-import ConQuien from "./components/ConQuien";
 import QuizCTA from "./components/QuizCTA";
 import Confianza from "./components/Confianza";
 import FAQ from "./components/FAQ";
@@ -31,12 +28,9 @@ export default function Home() {
         <Problema />
         <Giro />
         <SietePiezas />
-        <PlanesHome />
         <Sistema />
-        <Metodo />
         <Manifiesto />
         <Miriam />
-        <ConQuien />
         <QuizCTA />
         <Confianza />
         <FAQ />

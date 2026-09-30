@@ -35,12 +35,6 @@ export default function Header() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           <a
-            href="/#metodo"
-            className="text-sm text-stone/70 transition-colors hover:text-burgundy"
-          >
-            Método
-          </a>
-          <a
             href="/planes"
             className="text-sm text-stone/70 transition-colors hover:text-burgundy"
           >
