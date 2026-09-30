@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
-import Planes from "../components/Planes";
 import Footer from "../components/Footer";
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
+import PlanesHero from "./PlanesHero";
+import Setup from "./Setup";
+import PlanDetalle from "./PlanDetalle";
+import Comparativa from "./Comparativa";
+import Cuota from "./Cuota";
+import AntesDeElegir from "./AntesDeElegir";
+import DiagnosticoCierre from "./DiagnosticoCierre";
+import { PLANES } from "./datos";
 
 export const metadata: Metadata = {
   title: "Planes — auge.studio",
   description:
-    "Tres formas de trabajar con AUGE según lo que tu negocio necesite ahora. Promoción especial este mes.",
+    "Base, Crecimiento y Escala: qué incluye cada plan de AUGE, cuánto cuesta el setup, qué cubre la cuota mensual y cómo elegir el nivel que necesita tu negocio.",
 };
 
 export default function PlanesPage() {
@@ -20,7 +27,15 @@ export default function PlanesPage() {
         <Header />
       </div>
 
-      <Planes />
+      <PlanesHero />
+      <Setup />
+      {PLANES.map((plan, i) => (
+        <PlanDetalle key={plan.id} plan={plan} indice={i} />
+      ))}
+      <Comparativa />
+      <Cuota />
+      <AntesDeElegir />
+      <DiagnosticoCierre />
       <Footer />
 
       <FloatingWhatsApp />
