@@ -26,7 +26,7 @@ const PIEZAS = [
     nombre: "WhatsApp",
     x: 78.28,
     y: 78.28,
-    texto: "Responde las dudas habituales y acompaña a tu clienta hasta la reserva.",
+    texto: "Responde las dudas habituales y acompaña a cada persona hasta la reserva.",
   },
   {
     nombre: "Reseñas",
@@ -35,22 +35,22 @@ const PIEZAS = [
     texto: "La petición llega después de la visita, sin que tengas que acordarte.",
   },
   {
-    nombre: "Clientas",
+    nombre: "Clientes",
     x: 21.72,
     y: 78.28,
-    texto: "Seguimos el ritmo de cada servicio para que las clientas tengan motivos para volver.",
+    texto: "Seguimos el ritmo de cada servicio para que tus clientes tengan motivos para volver.",
   },
   {
     nombre: "Redes",
     x: 10,
     y: 50,
-    texto: "Presencia constante en tus redes, aunque tú estés ocupada en cabina.",
+    texto: "Presencia constante en tus redes, aunque tú estés en plena cita.",
   },
   {
     nombre: "Captación",
     x: 21.72,
     y: 21.72,
-    texto: "Campañas que traen clientas nuevas, medidas por lo que de verdad importa.",
+    texto: "Campañas que traen clientes nuevos, medidas por lo que de verdad importa.",
   },
 ];
 
@@ -65,7 +65,10 @@ export default function Sistema() {
     <section className="bg-cream px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
-          <h2 className="font-display text-3xl leading-tight text-stone sm:text-4xl md:text-5xl">
+          <p className="text-xs uppercase tracking-widest2 text-burgundy">
+            El sistema AUGE
+          </p>
+          <h2 className="mt-6 font-display text-3xl leading-tight text-stone sm:text-4xl md:text-5xl">
             Todo conectado.
             <br />
             <span className="italic text-burgundy">Tú, sin estar pendiente.</span>

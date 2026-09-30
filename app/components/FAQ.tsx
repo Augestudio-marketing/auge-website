@@ -4,7 +4,7 @@ import Reveal from "./Reveal";
 const PREGUNTAS = [
   {
     q: "¿Y si no entiendo nada de tecnología?",
-    a: "No necesitas entenderla. Nosotras nos encargamos de la parte técnica. Tú solo necesitas saber cómo quieres que funcione tu negocio.",
+    a: "No necesitas entenderla. Nos encargamos de la parte técnica. Tú solo necesitas saber cómo quieres que funcione tu negocio.",
   },
   {
     q: "¿Tengo que cambiar mi sistema de reservas?",
@@ -36,10 +36,13 @@ export default function FAQ() {
   }));
 
   return (
-    <section className="bg-marfil px-6 py-20 md:px-10 md:py-28">
+    <section className="bg-cream px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-3xl">
-        <Reveal>
-          <h2 className="text-center font-display text-3xl leading-tight text-stone sm:text-4xl">
+        <Reveal className="text-center">
+          <p className="text-xs uppercase tracking-widest2 text-burgundy">
+            Preguntas
+          </p>
+          <h2 className="mt-6 font-display text-3xl leading-tight text-stone sm:text-4xl">
             Lo que suelen preguntarnos.
           </h2>
         </Reveal>

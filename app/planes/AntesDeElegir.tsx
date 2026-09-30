@@ -16,7 +16,7 @@ const PREGUNTAS = [
   },
   {
     q: "¿Tengo que crear yo el contenido?",
-    a: "Nos proporcionas el material disponible de tu negocio y nosotras nos encargamos de organizarlo, editarlo, adaptarlo y planificarlo según el plan contratado.",
+    a: "Nos proporcionas el material disponible de tu negocio y nos encargamos de organizarlo, editarlo, adaptarlo y planificarlo según el plan contratado.",
   },
   {
     q: "¿Puedo cambiar de plan?",

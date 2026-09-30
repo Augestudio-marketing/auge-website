@@ -29,58 +29,83 @@ const SERVICIOS = [
     nombre: "Reseñas",
     gancho: "El trabajo que haces merece que se cuente.",
     texto:
-      "Después de una visita, pedimos a tus clientas que compartan su experiencia. En el momento adecuado. Sin que tengas que acordarte.",
+      "Después de una visita, pedimos a tus clientes que compartan su experiencia. En el momento adecuado. Sin que tengas que acordarte.",
   },
   {
-    nombre: "Clientas",
-    gancho: "Una clienta que ya confió en ti no debería perderse.",
+    nombre: "Seguimiento",
+    gancho: "Quien ya confió en ti no debería perderse.",
     texto:
-      "Creamos seguimientos según el ritmo de cada servicio para volver a conectar con ella cuando tenga sentido.",
+      "Creamos seguimientos según el ritmo de cada servicio para retomar el contacto cuando tenga sentido.",
   },
   {
-    nombre: "Social media + Captación",
+    nombre: "Social media y captación",
     gancho: "Que tu marca siga presente incluso cuando tú estás trabajando.",
     texto:
-      "Contenido y campañas pensados para construir marca, atraer nuevas clientas y acompañar el crecimiento.",
+      "Contenido y campañas pensados para construir marca, atraer nuevos clientes y acompañar el crecimiento.",
   },
 ];
 
 export default function SietePiezas() {
   return (
     <section className="bg-marfil px-6 py-20 md:px-10 md:py-28">
-      <div className="mx-auto max-w-3xl">
-        <Reveal>
-          <h2 className="font-display text-3xl leading-tight text-stone sm:text-4xl md:text-5xl">
-            Tu negocio.
-            <br />
-            <span className="italic text-burgundy">
-              Bien hecho por dentro y por fuera.
-            </span>
-          </h2>
-        </Reveal>
+      <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-5">
+          <Reveal className="lg:sticky lg:top-32">
+            <p className="text-xs uppercase tracking-widest text-burgundy">
+              Conoce AUGE
+            </p>
+            <h2 className="mt-6 font-display text-4xl leading-tight text-stone sm:text-5xl">
+              Tu negocio.
+              <br />
+              <span className="italic text-burgundy">
+                Bien hecho por dentro y por fuera.
+              </span>
+            </h2>
+            <p className="mt-6 max-w-sm leading-relaxed text-stone/70">
+              En AUGE unimos marca, presencia digital y sistemas para que tu
+              negocio no dependa de ti para cada pequeño detalle.
+            </p>
 
-        <div className="mt-16">
-          {SERVICIOS.map((s, i) => (
-            <Reveal key={s.nombre} delay={i * 60}>
-              <div className="grid gap-2 border-t border-stone/15 py-10 sm:grid-cols-[auto,1fr] sm:gap-10">
-                <span className="font-display text-sm italic text-burgundy sm:pt-1">
-                  {String(i + 1).padStart(2, "0")}
+            <div className="mt-10 border-t border-stone/15 pt-8">
+              <p className="font-display text-2xl leading-snug text-stone">
+                Tú sigues haciendo lo que mejor sabes hacer.
+                <br />
+                <span className="italic text-burgundy">
+                  Del resto nos encargamos en AUGE.
                 </span>
-                <div>
-                  <h3 className="font-display text-2xl text-stone sm:text-3xl">
-                    {s.nombre}
-                  </h3>
-                  <p className="mt-2 text-lg italic text-burgundy">
-                    {s.gancho}
-                  </p>
-                  <p className="mt-3 max-w-xl leading-relaxed text-stone/65">
-                    {s.texto}
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-          <div className="border-t border-stone/15" />
+              </p>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="lg:col-span-7">
+          <p className="text-xs uppercase tracking-widest text-burgundy">
+            Lo que hacemos
+          </p>
+          <ol className="mt-6 border-b border-stone/15">
+            {SERVICIOS.map((s, i) => (
+              <li key={s.nombre} className="border-t border-stone/15 py-8">
+                <Reveal>
+                  <div className="grid grid-cols-[2.5rem,1fr] gap-x-4 sm:grid-cols-[3.5rem,1fr]">
+                    <span className="font-display text-lg italic text-burgundy">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="text-sm font-medium uppercase tracking-widest text-stone">
+                        {s.nombre}
+                      </h3>
+                      <p className="mt-3 font-display text-xl italic leading-snug text-burgundy sm:text-2xl">
+                        {s.gancho}
+                      </p>
+                      <p className="mt-3 max-w-xl leading-relaxed text-stone/70">
+                        {s.texto}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

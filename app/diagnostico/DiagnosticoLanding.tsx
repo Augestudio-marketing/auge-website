@@ -27,7 +27,7 @@ const PASOS_PROCESO = [
   },
   {
     n: "3",
-    titulo: "Decides si quieres verlo con nosotras",
+    titulo: "Decides si quieres verlo con AUGE",
     texto: "Gratis, 30 minutos, sin compromiso. Solo si te interesa.",
   },
 ];

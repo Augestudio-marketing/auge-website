@@ -64,7 +64,7 @@ export const PLANES: Plan[] = [
       {
         titulo: "Calendario de citas",
         texto: [
-          "Tus clientas pueden consultar disponibilidad y reservar online sin depender de que estés disponible para responder.",
+          "Tus clientes pueden consultar disponibilidad y reservar online sin depender de que estés disponible para responder.",
         ],
       },
       {
@@ -108,7 +108,7 @@ export const PLANES: Plan[] = [
       {
         titulo: "Reservas automáticas",
         texto: [
-          "Automatizamos el proceso alrededor de las reservas para reducir la gestión manual y facilitar que una clienta pueda reservar cuando le venga bien.",
+          "Automatizamos el proceso alrededor de las reservas para reducir la gestión manual y facilitar que cada cliente pueda reservar cuando le venga bien.",
         ],
       },
       {
@@ -120,13 +120,13 @@ export const PLANES: Plan[] = [
       {
         titulo: "Sistema de reseñas",
         texto: [
-          "Después de una cita, el sistema solicita la reseña en el momento adecuado para facilitar que más clientas compartan su experiencia.",
+          "Después de una cita, el sistema solicita la reseña en el momento adecuado para facilitar que más clientes compartan su experiencia.",
         ],
       },
       {
-        titulo: "Recuperación de clientas",
+        titulo: "Recuperación de clientes",
         texto: [
-          "Detectamos clientas que llevan tiempo sin volver y creamos seguimientos para volver a conectar con ellas.",
+          "Detectamos a quienes llevan tiempo sin volver y creamos seguimientos para retomar el contacto.",
         ],
       },
       {
@@ -139,7 +139,7 @@ export const PLANES: Plan[] = [
       {
         titulo: "Gestión de redes sociales",
         texto: [
-          "Tú nos proporcionas el material disponible de tu negocio y nosotras nos encargamos de organizarlo, editarlo, adaptarlo y preparar las publicaciones.",
+          "Tú nos proporcionas el material disponible de tu negocio y nos encargamos de organizarlo, editarlo, adaptarlo y preparar las publicaciones.",
         ],
       },
       {
@@ -157,7 +157,7 @@ export const PLANES: Plan[] = [
       },
     ],
     idealPara:
-      "Negocios que quieren dejar atrás la gestión improvisada y empezar a tener un sistema que cuide sus reservas, sus clientas y su comunicación de forma constante.",
+      "Negocios que quieren dejar atrás la gestión improvisada y empezar a tener un sistema que cuide sus reservas, su clientela y su comunicación de forma constante.",
     cuotaCubre:
       "Mantenimiento · soporte · contenido · análisis · automatización · seguimiento",
   },
@@ -199,14 +199,14 @@ export const PLANES: Plan[] = [
       {
         titulo: "Google Ads",
         texto: [
-          "Gestionamos campañas en Google para aparecer cuando potenciales clientas ya están buscando determinados servicios.",
+          "Gestionamos campañas en Google para aparecer cuando potenciales clientes ya están buscando determinados servicios.",
         ],
         nota: NOTA_PUBLICIDAD,
       },
       {
         titulo: "Agente de WhatsApp",
         texto: [
-          "Un agente de WhatsApp responde automáticamente a las preguntas habituales de las clientas, proporciona información sobre servicios y acompaña el proceso de atención y reserva.",
+          "Un agente de WhatsApp responde automáticamente a las preguntas habituales de tus clientes, proporciona información sobre servicios y acompaña el proceso de atención y reserva.",
         ],
         destacado: ["Tu WhatsApp sigue atendiendo,", "aunque tú estés trabajando."],
       },
@@ -241,7 +241,7 @@ export const COMPARATIVA: { pieza: string; desde: 0 | 1 | 2 }[] = [
   { pieza: "Reservas automáticas", desde: 1 },
   { pieza: "Respuestas automáticas", desde: 1 },
   { pieza: "Sistema de reseñas", desde: 1 },
-  { pieza: "Recuperación de clientas", desde: 1 },
+  { pieza: "Recuperación de clientes", desde: 1 },
   { pieza: "Planificación de contenido", desde: 1 },
   { pieza: "Gestión de redes", desde: 1 },
   { pieza: "Análisis mensual", desde: 1 },

@@ -24,7 +24,7 @@ export default function DiagnosticoCierre() {
             <span className="italic">necesitas?</span>
           </h2>
           <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-cream/85">
-            No tienes por qué decidirlo sola.
+            No tienes por qué decidirlo sin ayuda.
           </p>
           <p className="mx-auto mt-4 max-w-xl leading-relaxed text-cream/65">
             Haz nuestro Diagnóstico AUGE y descubre qué parte de tu negocio

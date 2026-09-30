@@ -214,7 +214,7 @@ export const INTENCION_OPCIONES = [
   { texto: "Solo quiero entender qué podría mejorar.", valor: "curiosidad" },
   { texto: "Estoy buscando soluciones y quiero comparar opciones.", valor: "investigacion" },
   { texto: "Quiero solucionarlo cuanto antes.", valor: "alta" },
-  { texto: "Si encuentro algo que tenga sentido para mi negocio, estoy lista para invertir.", valor: "alta" },
+  { texto: "Si encuentro algo que tenga sentido para mi negocio, quiero invertir en ello.", valor: "alta" },
 ];
 
 function opcionesSeleccionadas(respuesta: string) {
