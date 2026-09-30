@@ -26,7 +26,6 @@ export type Plan = {
   incluyeIntro?: string;
   incluye: Pieza[];
   idealPara: string;
-  cuotaCubre: string;
   etiqueta?: string;
   notaPrecio?: string;
 };
@@ -88,7 +87,6 @@ export const PLANES: Plan[] = [
     ],
     idealPara:
       "Negocios que quieren tener una presencia digital profesional y una agenda organizada sin seguir gestionando cada reserva manualmente.",
-    cuotaCubre: "Mantenimiento · soporte · ajustes",
   },
   {
     id: "crecimiento",
@@ -133,19 +131,19 @@ export const PLANES: Plan[] = [
         titulo: "Planificación de contenidos",
         texto: [
           "Nos encargamos de planificar qué comunicar en tus redes cada mes. No se trata de publicar por publicar.",
-          "Definimos los temas, formatos y contenidos que tienen sentido para tu negocio.",
+          "Definimos los temas, formatos y contenidos que tienen sentido para tu negocio y los organizamos en un calendario de publicaciones.",
         ],
       },
       {
-        titulo: "Gestión de redes sociales",
+        titulo: "Gestión de contenidos",
         texto: [
-          "Tú nos proporcionas el material disponible de tu negocio y nos encargamos de organizarlo, editarlo, adaptarlo y preparar las publicaciones.",
+          "Tú nos proporcionas el material disponible de tu negocio y nos encargamos de organizarlo, editarlo, adaptarlo y convertirlo en contenido listo para publicar.",
         ],
       },
       {
         titulo: "Análisis mensual",
         texto: [
-          "Analizamos qué contenidos han funcionado, cuáles no y qué aprendizajes podemos aplicar al siguiente mes.",
+          "Analizamos qué contenidos han funcionado, cuáles no y te recomendamos qué publicar el mes siguiente.",
           "El objetivo es que cada mes tengamos más claridad sobre qué merece la pena comunicar.",
         ],
       },
@@ -158,8 +156,6 @@ export const PLANES: Plan[] = [
     ],
     idealPara:
       "Negocios que quieren dejar atrás la gestión improvisada y empezar a tener un sistema que cuide sus reservas, su clientela y su comunicación de forma constante.",
-    cuotaCubre:
-      "Mantenimiento · soporte · contenido · análisis · automatización · seguimiento",
   },
   {
     id: "escala",
@@ -180,8 +176,7 @@ export const PLANES: Plan[] = [
       {
         titulo: "Gestión completa de redes",
         texto: [
-          "Nos encargamos de la planificación, edición, adaptación y publicación del contenido.",
-          "Tu negocio nos proporciona el material y AUGE lo convierte en una estrategia de contenido coherente con la marca.",
+          "Nos encargamos de la planificación, edición, publicación y evolución mensual de tus redes, utilizando el material que nos proporciona tu negocio.",
         ],
       },
       {
@@ -225,7 +220,6 @@ export const PLANES: Plan[] = [
     ],
     idealPara:
       "Negocios que quieren delegar no solo la parte técnica, sino también la gestión continua de su presencia digital, contenido, automatización y captación.",
-    cuotaCubre: "Gestión · contenido · captación · automatización · análisis · optimización",
   },
 ];
 
@@ -236,26 +230,26 @@ export const COMPARATIVA: { pieza: string; desde: 0 | 1 | 2 }[] = [
   { pieza: "Calendario de citas", desde: 0 },
   { pieza: "App de citas AUGE", desde: 0 },
   { pieza: "Recordatorios", desde: 0 },
-  { pieza: "Mantenimiento y soporte", desde: 0 },
-  { pieza: "Optimización continua", desde: 0 },
   { pieza: "Reservas automáticas", desde: 1 },
   { pieza: "Respuestas automáticas", desde: 1 },
   { pieza: "Sistema de reseñas", desde: 1 },
   { pieza: "Recuperación de clientes", desde: 1 },
-  { pieza: "Planificación de contenido", desde: 1 },
-  { pieza: "Gestión de redes", desde: 1 },
+  { pieza: "Planificación de contenidos", desde: 1 },
+  { pieza: "Gestión de contenidos", desde: 1 },
   { pieza: "Análisis mensual", desde: 1 },
-  { pieza: "Gestión completa de redes y publicación", desde: 2 },
-  { pieza: "Estrategia de contenidos", desde: 2 },
+  { pieza: "Gestión completa de redes", desde: 2 },
   { pieza: "Meta Ads", desde: 2 },
   { pieza: "Google Ads", desde: 2 },
   { pieza: "Agente de WhatsApp", desde: 2 },
   { pieza: "Automatizaciones avanzadas", desde: 2 },
+  { pieza: "Optimización continua", desde: 0 },
 ];
 
 export const whatsappPlan = (plan: string) =>
   "https://wa.me/34613803022?text=" +
-  encodeURIComponent(`Hola, me interesa el plan ${plan} de AUGE.`);
+  encodeURIComponent(
+    `Hola, me interesa el plan ${plan} de AUGE y me gustaría conocer los siguientes pasos.`
+  );
 
 export const WHATSAPP_HABLAR =
   "https://wa.me/34613803022?text=" +

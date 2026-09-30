@@ -16,9 +16,9 @@ export default function PlanesHero() {
             <span className="italic text-burgundy">con tu negocio.</span>
           </h1>
           <p className="mx-auto mt-8 max-w-lg text-lg leading-relaxed text-stone/75">
-            Tres formas de llevar tu negocio a otro nivel.
+            Tres formas de decidir cuánto quieres delegar.
             <br className="hidden sm:block" /> Empieza por lo que realmente
-            necesitas.
+            necesitas y deja que el sistema crezca contigo.
           </p>
           <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-stone/55">
             Todos los planes incluyen un setup inicial y una cuota mensual de

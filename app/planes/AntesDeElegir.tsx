@@ -16,7 +16,7 @@ const PREGUNTAS = [
   },
   {
     q: "¿Tengo que crear yo el contenido?",
-    a: "Nos proporcionas el material disponible de tu negocio y nos encargamos de organizarlo, editarlo, adaptarlo y planificarlo según el plan contratado.",
+    a: "Nos proporcionas el material disponible de tu negocio y nos encargamos de organizarlo, editarlo, adaptarlo y planificarlo según el plan contratado. La gestión incluida contempla un volumen de contenido y campañas definido según las necesidades del negocio.",
   },
   {
     q: "¿Puedo cambiar de plan?",

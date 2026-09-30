@@ -1,5 +1,4 @@
 import Reveal from "../components/Reveal";
-import { PLANES } from "./datos";
 
 export default function Cuota() {
   return (
@@ -24,22 +23,6 @@ export default function Cuota() {
             contratados.
           </p>
         </Reveal>
-
-        <div className="mt-16 border-b border-cream/15">
-          {PLANES.map((plan, i) => (
-            <Reveal key={plan.id} delay={i * 100}>
-              <div className="grid gap-2 border-t border-cream/15 py-7 md:grid-cols-12 md:items-baseline md:gap-8">
-                <h3 className="font-display text-2xl md:col-span-3">{plan.nombre}</h3>
-                <p className="leading-relaxed text-cream/70 md:col-span-7">
-                  {plan.cuotaCubre}
-                </p>
-                <p className="font-display text-xl text-cream/90 md:col-span-2 md:text-right">
-                  {plan.cuota.actual}/mes
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );
